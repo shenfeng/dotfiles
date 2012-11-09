@@ -13,7 +13,7 @@
   (setq mac-option-modifier 'alt
         mac-command-modifier 'meta)
   ;; macbook air is tiny
-  (set-face-attribute 'default nil :font "Monaco" :height 122))
+  (set-face-attribute 'default nil :font "Monaco" :height 132))
 
 (add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path (concat dotfiles-dir "vendor"))
@@ -21,6 +21,7 @@
 (require 'feng-elpa)
 (require 'feng-defuns)
 (require 'feng-hooks)
+(require 'uniquify)
 (require 'recentf)
 (require 'magit)
 (require 'yasnippet)
@@ -40,6 +41,7 @@
       css-indent-level 4
       ack-command "s "
       ack-default-directory-function 'feng-project-root
+      uniquify-buffer-name-style 'forward
       js2-auto-indent-p t
       js2-indent-on-enter-key t
       js2-enter-indents-newline t
@@ -101,15 +103,3 @@
       ac-use-menu-map t)
 
 (require 'feng-bindings)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("71b172ea4aad108801421cc5251edb6c792f3adbaecfa1c52e94e3d99634dee7" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
