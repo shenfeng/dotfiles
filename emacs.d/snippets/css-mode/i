@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : id selector
+# --
+#$1 {
+    $0
+}

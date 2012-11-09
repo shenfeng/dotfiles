@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : float left
+# --
+float: left;$0

@@ -1,0 +1,36 @@
+# sudo apt-get install nginx php5-cgi spawn-fcgi php5-mysql mysql-server
+
+# sudo /usr/bin/spawn-fcgi -a 127.0.0.1 -p 9000 -u www-data -C 1 -f /usr/bin/php5-cgi
+
+# mysql under [mysql] [mysqld] default-character-set=utf8
+
+# nginx default log format for awstats
+# LogFormat="%host %other %logname %time1 %methodurl %code %bytesd %refererquot %uaquot"
+server {
+        server_name butterfly-home.com;
+
+
+        location / {
+                root   /var/www/wordpress;
+                # wordpress permalink custom stuctrue : /%postname%/
+                try_files $uri $uri/ /index.php?q=$uri&$args;
+
+                access_log  /var/log/nginx/wordpress.access.log;
+                index  index.php index.html index.htm;
+        }
+        #add expires header 
+        location ~* \.(ico|css|js|gif|jpe?g|png)(\?[0-9]+)?$ {
+                root   /var/www/wordpress;
+                expires max;
+                access_log off;
+        }
+        location ~ \.php$ {
+                fastcgi_pass   127.0.0.1:9000;
+                fastcgi_index  index.php;
+                fastcgi_param  SCRIPT_FILENAME  /var/www/wordpress$fastcgi_script_name;
+                include fastcgi_params;
+                #no this line, "no input file" error.
+                root   /var/www/wordpress;
+                access_log  /var/log/nginx/wordpress.access.log;
+        }
+}

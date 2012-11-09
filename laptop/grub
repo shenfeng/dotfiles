@@ -1,0 +1,3 @@
+GRUB_CMDLINE_LINUX=”elevator=noop”
+GRUB_TERMINAL=console
+GRUB_TIMEOUT=2

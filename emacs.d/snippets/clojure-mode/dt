@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: deftest
+# --
+(deftest test-${1:test}
+  $0
+  )

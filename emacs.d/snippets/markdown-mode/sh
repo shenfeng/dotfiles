@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: syntax hightlight
+# --
+{% highlight $1 %}
+$0
+{% endhighlight %}

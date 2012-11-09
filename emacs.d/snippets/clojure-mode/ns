@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+#name : Namespace Macro
+# ^{:doc "$1"
+#      :author "`user-full-name`"}
+# --
+(ns `(subst-char-in-string ?/ ?.
+    (subst-char-in-string ?_ ?-    (replace-regexp-in-string
+    ".*\\\\(?:src\\\\|test\\\\)/\\\\(.*\\\\).clj" "\\\\1" (buffer-file-name)))))`
+  $0
+)

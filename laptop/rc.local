@@ -1,0 +1,17 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+echo -n 210 > /sys/devices/platform/i8042/serio1/serio2/speed
+echo -n 250 > /sys/devices/platform/i8042/serio1/serio2/sensitivity
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Scrolling" 1 1
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Pressure" 20
+exit 0

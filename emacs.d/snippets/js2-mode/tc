@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : tc
+# --
+try {
+  $0
+}catch(e) {}

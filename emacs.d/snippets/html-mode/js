@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : script
+# --
+<script src="$1"></script>$0

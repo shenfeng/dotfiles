@@ -1,0 +1,10 @@
+# route add default gw 192.168.10.102 ppp0
+# pppd call office
+# pptp-linux
+
+pty "pptp gfwvpn.mei.fm --nolaunchpppd"
+name vpnuser
+remotename PPTP
+require-mppe-128
+file /etc/ppp/options.pptp
+ipparam office

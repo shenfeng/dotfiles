@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : css class
+# --
+.$1 {
+    $0
+}

@@ -1,0 +1,16 @@
+#!/bin/sh
+breakchars="(){}[],^%$#@\"\";:''|\\"
+CLOJURE_JAR=/opt/clojure-1.2.0/clojure.jar
+CLOJURE_CONTRIB=/opt/clojure-contrib-1.2.0/target/clojure-contrib-1.2.0.jar
+COMPELETE_PATH=/tmp/.clj_completions
+touch $COMPELETE_PATH
+if [ $# -eq 0 ]; then
+	exec rlwrap --remember -c -b "$breakchars" \
+	            -f $COMPELETE_PATH \
+		    java -cp /tmp/:$CLOJURE_JAR:$CLOJURE_CONTRIB clojure.main
+else
+	#echo $1 $@
+	exec java -cp $CLOJURE_JAR:$CLOJURE_CONTRIB clojure.main $1 -- "$@"
+fi
+#java -cp /opt/clojure-1.2.0/jline-0.9.94.jar:/opt/clojure-1.2.0/clojure.jar:/opt/clojure-contrib-1.2.0/target/clojure-contrib-1.2.0.jar jline.ConsoleRunner clojure.main
+#java -cp /home/feng/Downloads/programming-clojure:/opt/clojure-1.2.0/jline-0.9.94.jar:/opt/clojure-1.2.0/clojure.jar:/opt/clojure-contrib-1.2.0/target/clojure-contrib-1.2.0.jar jline.ConsoleRunner clojure.main

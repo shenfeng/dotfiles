@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+#name : main
+# --
+package main
+
+import (
+	"$1"
+)
+
+func main() {
+  $0
+}

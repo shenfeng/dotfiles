@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : show
+# --
+display: block;$0

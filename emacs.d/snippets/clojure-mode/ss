@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: status test
+# --
+(is (= ${1:200} (:status ${2:resp})))

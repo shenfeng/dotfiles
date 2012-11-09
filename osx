@@ -1,0 +1,25 @@
+
+1. disable spotlight
+
+http://osxdaily.com/2011/12/10/disable-or-enable-spotlight-in-mac-os-x-lion/
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+
+2. caps lock => ctrl, use f1 - f12 as stand keys, remove f11/f12 use in os x, disable brightness auto adjust
+3. install jdk & Xcode command line tools => install brew
+
+https://github.com/mxcl/homebrew/wiki/installation
+
+4. clone dotfiles
+5. install emacs
+brew install emacs --cocoa
+http://superuser.com/questions/256404/fullscreen-emacs-in-osx
+
+5. install  wget, htop
+6. change to zsh
+7. lauch emacs. emacs will install deps. recompile-init
+
+# disable dashboard
+
+defaults write com.apple.dashboard mcx-disabled -boolean YES #disable
+defaults write com.apple.dashboard mcx-disabled -boolean NO #enable
+killall Dock

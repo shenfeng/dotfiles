@@ -1,0 +1,107 @@
+#! /bin/bash -x
+
+is_mac() { [ $OSTYPE = 'darwin11.0' ]; }
+
+is_linux() { [ $OSTYPE = 'linux-gnu' ]; }
+
+if is_linux; then
+    ABSOLUTE_PATH=$(readlink -f $0)
+    DOTFILES="${ABSOLUTE_PATH%/*}"
+else
+    DOTFILES="/Users/feng/dotfiles"
+fi
+
+mkdir -p ~/.ssh
+mkdir -p ~/.config
+mkdir -p ~/bin
+
+rm -rf ~/.Xresources
+rm -rf ~/.config/awesome
+rm -rf ~/.emacs.d
+rm -rf ~/.fonts
+rm -rf ~/.gitconfig
+rm -rf ~/.tmux.conf
+rm -rf ~/.vim
+rm -rf ~/.vimrc
+rm -rf ~/.vimrc
+rm -rf ~/.xinitrc
+rm -rf ~/.zshrc
+
+if is_linux; then
+    ln -sf $DOTFILES/awesome ~/.config/awesome
+    ln -sf $DOTFILES/chrome ~/bin/
+    ln -sf $DOTFILES/evilvte/evilvte ~/bin/
+    ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
+    ln -sf $DOTFILES/xinitrc ~/.xinitrc
+    ln -sf $DOTFILES/xresources ~/.Xresources
+else
+    # show full path in finder's title
+    defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+fi
+
+mkdir -p $DOTFILES/emacs.d/vendor
+
+ln -sf $DOTFILES/ackrc ~/.ackrc
+ln -sf $DOTFILES/emacs.d ~/.emacs.d
+ln -sf $DOTFILES/fonts ~/.fonts
+ln -sf $DOTFILES/fonts.conf ~/.fonts.conf
+ln -sf $DOTFILES/gitconfig ~/.gitconfig
+ln -sf $DOTFILES/ssh_config ~/.ssh/config
+ln -sf $DOTFILES/vim ~/.vim
+ln -sf $DOTFILES/vimrc ~/.vimrc
+ln -sf $DOTFILES/zshrc ~/.zshrc
+ln -sf $DOTFILES/pyline ~/bin/pyline
+
+if [ ! -d ~/dotfiles/zsh/zsh-completions ]; then
+    cd $DOTFILES/zsh/
+    git clone git://github.com/zsh-users/zsh-completions.git
+fi
+
+rm -f ~/.zcompdump; compinit
+
+# install vcprompt
+if [ ! -f ~/bin/vcprompt ]; then
+    echo "install vcprompt";
+    cd /tmp;
+    wget -c https://github.com/djl/vcprompt/raw/master/bin/vcprompt --no-check-certificate
+    chmod +x vcprompt;
+    mv vcprompt ~/bin/
+fi
+
+if [ ! -f ~/bin/s ]; then
+    echo "install ack-grep";
+    cd /tmp/
+    wget -c http://betterthangrep.com/ack-standalone -O ack-grep
+    chmod +x ack-grep
+    mv ack-grep ~/bin/s
+fi
+
+if [ ! -f ~/.emacs.d/vendor/js2-mode.el ]; then
+    cd ~/.emacs.d/vendor/
+    wget -c https://raw.github.com/mooz/js2-mode/master/js2-mode.el
+fi
+
+# Socks proxy, more handy than the above, no setup on the server
+# ssh -C2qTnN -D localhost:3218 username@server
+
+# install lein
+if [ ! -f ~/bin/lein ]; then
+    echo "install lein";
+    cd /tmp;
+    wget -c https://github.com/technomancy/leiningen/raw/stable/bin/lein --no-check-certificate
+    chmod +x lein;
+    mv lein ~/bin/
+fi
+
+# 010109248 gehua.net user id
+# rm -f ~/.zcompdump; compinit
+
+
+# google.com.             283     IN      A       74.125.128.101
+# google.com.             283     IN      A       74.125.128.100
+# google.com.             283     IN      A       74.125.128.139
+# google.com.             283     IN      A       74.125.128.138
+# google.com.             283     IN      A       74.125.128.113
+# google.com.             283     IN      A       74.125.128.102
+# http://203.208.45.209/
+# 203.208.46.145

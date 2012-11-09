@@ -1,0 +1,10 @@
+# --pager=less -r
+--type-set
+css=.less,.scss
+--type-set
+jinja2=.jinja2
+--type-set
+tpl=.tpl
+--smart-case
+--ignore-dir=classes
+--context=1

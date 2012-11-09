@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ifdef
+# --
+#ifdef ${1:`(upcase "DEBUG")`}
+       $0
+#endif

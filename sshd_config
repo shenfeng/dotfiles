@@ -1,0 +1,7 @@
+
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+UsePAM no
+
+PermitRootLogin no
+

@@ -1,0 +1,22 @@
+[user]
+	name = feng
+	email = feng.shen@onycloud.com
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	grep = auto
+	ui = always
+[diff]
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[format]
+	pretty = %h - %an, %ar : %s
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --

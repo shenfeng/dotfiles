@@ -1,0 +1,33 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid -o value -s UUID' to print the universally unique identifier
+# for a device; this may be used with UUID= as a more robust way to name
+# devices that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+proc            /proc           proc    nodev,noexec,nosuid 0       0
+# / was on /dev/sda5 during installation
+UUID=02e96b07-0400-44d5-a817-9b551adabde9 /               ext4    errors=remount-ro,noatime,data=writeback 0       1
+# without this commmand, system can not boot: sudo tune2fs -o journal_data_writeback /dev/sda1
+# /home was on /dev/sda7 during installation
+UUID=f2f2e5e0-f23f-4a89-88ab-d3051715e4a1 /home           ext4    noatime,data=writeback        0       2
+# /opt was on /dev/sda6 during installation
+UUID=09268647-0c75-467b-a11e-be2252995062 /opt            ext4    noatime,data=writeback        0       2
+
+#
+tmpfs	/tmp	tmpfs	defaults	0	0
+tmpfs	/var/log	tmpfs	defaults	0	0
+tmpfs	/var/tmp	tmpfs	defaults	0	0
+tmpfs	/home/feng/Downloads	tmpfs	defaults	0	0
+
+# for apt-get cache
+# sudo mount tmpfs /var/cache/apt/archives -t tmpfs
+# mkdir /var/cache/apt/archives/partial
+
+# browser cache:
+# firefox: browser.cache.disk.parent_directory = /tmp
+# chrome: –user-data-dir=/tmp
+
+# /etc/default/grub
+# GRUB_CMDLINE_LINUX=”elevator=noop”
+

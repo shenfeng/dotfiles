@@ -1,0 +1,23 @@
+alias tw='sudo tcpdump -i any -s 65535 -w /tmp/tcpdump && wireshark /tmp/tcpdump'
+alias ..='cd ..'
+
+#sort by size desc
+alias l='ls -lhSar'
+alias f='free -m'
+alias df='df -h'
+
+# color
+alias tree='tree -C'
+
+#easy to see network
+alias li='lsof -i -nP'
+
+alias gb='git branch'
+alias gl='git log'
+alias g='git status'
+
+alias dhclient='dhclient -v'
+alias nc='rlwrap nc'
+
+PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+# User specific aliases and functions

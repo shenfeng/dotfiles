@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : each
+# --
+_.each(${1:array}, function(${2:e}) {
+   $0
+});

@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name: position absolute
+# --
+position: absolute;$0

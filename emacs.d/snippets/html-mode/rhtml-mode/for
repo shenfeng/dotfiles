@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : for
+# --
+{% for ${1:item} in ${2:collection} %}
+  $0
+{% endfor %}

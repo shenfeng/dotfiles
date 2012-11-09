@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: make request
+# --
+${4:resp} (${1:authed-app} {:uri ${2:uri}
+                      :request-method :post})
+$0

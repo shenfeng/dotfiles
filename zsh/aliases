@@ -1,0 +1,70 @@
+#enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+
+alias tw='sudo tcpdump -i any -s 65535 -w /tmp/tcpdump && wireshark /tmp/tcpdump'
+alias ..='cd ..'
+
+alias l='ls -lhSr'              # sort by size desc
+alias lh='ls -ld .*'            # List only file beginning with "."
+alias f='free -m'
+alias df='df -h'
+
+# color
+alias tree='tree -C'
+
+#easy to see network
+alias li='lsof -i -nP'
+alias sli='sudo lsof -i -nP'
+alias 'ps?'='ps ax | grep '
+
+alias gb='git branch'
+alias gl='git lg'
+alias g='git status'
+alias gd='git difftool --cached'
+alias gud='git fetch gerrit && git stash && git rebase gerrit/dev &&  git stash pop'
+alias gum='git fetch gerrit && git stash && git rebase gerrit/master &&  git stash pop'
+alias gpm='git push origin HEAD:refs/for/master'
+alias gpd='git push origin HEAD:refs/for/dev'
+
+alias dhclient='dhclient -v'
+alias nc='rlwrap nc'
+
+# allow ease use of emacs to edit file
+alias e='emacsclient -n'
+alias xcopy='xclip -selection clipboard'
+
+# edit file with root privs
+function E() {
+    file=`readlink -f $1`
+    emacsclient -n "/sudo:root@localhost:$file"
+}
+# copy full path to clipboard
+function fp() {
+    echo `readlink -f $1`
+    echo -n `readlink -f $1` | xcopy
+}
+
+# start emacs maximized
+function em() {
+    if [ $# != 0 ]
+    then
+        emacs --maximized $1&!
+    else
+        emacs --maximized &!
+    fi
+}
+
+function md () { mkdir -p "$@" && cd "$@"; }
