@@ -42,6 +42,7 @@
 (fringe-mode (cons 2 0))
 (setq ruby-indent-level 2
       css-indent-level 4
+      autopair-blink nil
       ack-command "s "
       ack-default-directory-function 'feng-project-root
       font-lock-maximum-decoration t

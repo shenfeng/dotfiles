@@ -43,6 +43,7 @@
   (hl-line-mode))
 
 (defun feng-html-mode-hook ()
+  (require 'rename-sgml-tag)
   (define-key html-mode-map (kbd "<M-left>") 'sgml-skip-tag-backward)
   (define-key html-mode-map (kbd "M-r") 'rename-sgml-tag)
   (define-key html-mode-map (kbd "<M-right>") 'sgml-skip-tag-forward)
@@ -71,8 +72,8 @@
   (setq ac-ignores '("log" "tc" "df" "fc" "el" "ei" "if" "ife" "for"))
   (yas-minor-mode)
   (autopair-mode)
-  (js2-highlight-vars-mode)
-  (setq autopair-blink nil))
+  (require 'js2-highlight-vars)
+  (js2-highlight-vars-mode))
 
 (eval-after-load 'paredit
   '(progn
@@ -126,6 +127,11 @@
                      (match-end 0)
                      'face (list :background
                                  (match-string-no-properties 0))))))))
+
+(eval-after-load 'magit
+  '(progn
+     (set-face-foreground 'magit-diff-add "green3")
+     (set-face-foreground 'magit-diff-del "red3")))
 
 (when (require 'rainbow-delimiters nil 'noerror)
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)

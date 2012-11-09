@@ -13,16 +13,17 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-o") 'feng-anthing-for-files)
 (global-set-key (kbd "M-o") 'feng-anthing-for-occur)
+(global-set-key [f1] 'delete-other-windows)
+(global-set-key [f3] 'save-buffer)
+(global-set-key [f12] 'smart-split)
 
 (define-key ac-mode-map (kbd "C-c C-n") 'auto-complete)
 
 (define-key undo-tree-map (kbd "C-.") 'undo-tree-redo)
 
-(global-set-key [f1] 'delete-other-windows)
-(global-set-key [f3] 'save-buffer)
-(global-set-key [f12] 'smart-split)
-
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl$" . mustache-mode))
 
 (provide 'feng-bindings)
