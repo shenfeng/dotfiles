@@ -17,8 +17,13 @@
 (global-set-key [f3] 'save-buffer)
 (global-set-key [f12] 'smart-split)
 
-(define-key ac-mode-map (kbd "C-c C-n") 'auto-complete)
+(global-set-key (kbd "C--") 'decrement-number-decimal)
+(global-set-key (kbd "C-=") 'increment-number-decimal)
+(global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
 
+(global-set-key (kbd "<C-M-backspace>") 'kill-to-beginning-of-line)
+
+(define-key ac-mode-map (kbd "C-c C-n") 'auto-complete)
 (define-key undo-tree-map (kbd "C-.") 'undo-tree-redo)
 
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))

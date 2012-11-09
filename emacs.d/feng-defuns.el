@@ -1,3 +1,9 @@
+(defun kill-to-beginning-of-line ()
+  "Same as \\[universal-argument] 0 \\[kill-line]."
+  (interactive "*")
+  (kill-line 0)
+  (indent-for-tab-command))
+
 (defun sudo-edit (&optional arg)
   (interactive "p")
   (if (or arg (not buffer-file-name))
@@ -96,8 +102,6 @@ is a comment, uncomment."
             (setq answer (+ (expt 10 field-width) answer)))
           (replace-match (format (concat "%0" (int-to-string field-width) "d")
                                  answer)))))))
-
-
 
 (defun decrement-number-decimal (&optional arg)
   (interactive "p*")
