@@ -8,7 +8,7 @@
 (defun feng-project-root (&rest args)
   (expand-file-name
    (or (locate-dominating-file default-directory ".git")
-       "~/workspace")))
+       "~/workspace/rssminer")))
 
 (defvar feng-file-patterns
   '("*.clj" "*.html" "*.el" "*.js" "*.xml"
@@ -19,7 +19,7 @@
 (defvar feng-file-find-options
   (concat "! -regex '.*src/templates.*'"
           " ! -regex '.*bin/.*'"
-          " ! -regex '.*templates/jinja.*'"))
+          " ! -regex '.*/\\..*'"))      ;ignore .idea .settings
 
 (defun feng-join-file-patten ()
   (mapconcat (lambda (pat) (format "-name \"%s\"" pat))

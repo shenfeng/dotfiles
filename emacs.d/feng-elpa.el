@@ -20,5 +20,4 @@
         (message "Installing %s" (symbol-name package))
         (package-install package)))))
 
-
 (provide 'feng-elpa)
