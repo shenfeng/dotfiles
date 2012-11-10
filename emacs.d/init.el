@@ -7,7 +7,8 @@
 (ignore-errors                          ; emacs --daemon error
   (when (eq system-type 'gnu/linux)
     (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-    (set-face-attribute 'default nil :font "Consolas" :height 112)))
+    (set-face-attribute 'default nil :font "Consolas" :height
+                        (if (> (x-display-pixel-width) 2000) 122 112))))
 
 (when (eq system-type 'darwin)
   (setq mac-option-modifier 'alt
@@ -62,9 +63,7 @@
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (tooltip-mode -1)
-  ;; (blink-cursor-mode 1)
-  )
+  (tooltip-mode -1))
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -102,7 +101,7 @@
 
 (yas/load-directory (concat dotfiles-dir "snippets"))
 (ac-config-default)
-(setq ac-auto-show-menu 0.2
+(setq ac-auto-show-menu 0.1
       ac-fuzzy-enable t
       ac-quick-help-height 25
       ac-menu-height 18
