@@ -1,10 +1,12 @@
 (require 'feng-defuns)
+(require 'feng-highlight)
 
 (global-set-key (kbd "M-1") 'feng-select-first-window)
 (global-set-key (kbd "M-2") 'feng-select-second-window)
 (global-set-key (kbd "M-3") 'feng-select-third-window)
 (global-set-key (kbd "M-4") 'feng-select-forth-window)
 (global-set-key (kbd "M-q") 'cleanup-buffer)
+(global-set-key (kbd "M-e") 'feng-highlight-at-point)
 (global-set-key (kbd "M-p") 'move-text-up)
 (global-set-key (kbd "M-n") 'move-text-down)
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region-or-line)
@@ -16,6 +18,7 @@
 (global-set-key [f1] 'delete-other-windows)
 (global-set-key [f3] 'save-buffer)
 (global-set-key [f12] 'smart-split)
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
 
 (global-set-key (kbd "C--") 'decrement-number-decimal)
 (global-set-key (kbd "C-=") 'increment-number-decimal)

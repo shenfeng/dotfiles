@@ -33,6 +33,9 @@
 (require 'autopair)
 (require 'js2-mode)
 
+(setq cua-enable-cua-keys nil) ;; don't add C-x,C-c,C-v
+(cua-mode t)                   ;; for rectangles, CUA is nice
+
 (setq auto-save-default nil            ; Don't want any auto saving
       ;; echo-keystrokes 0.1
       visible-bell t                   ; Prevent noise when C-g is hit

@@ -8,7 +8,8 @@
 (let ((packages '(anything anything-config anything-match-plugin auto-complete
                            clojure-test-mode css-mode yasnippet ack
                            go-mode ;; ac-nrepl nrepl
-                           idle-highlight-mode inf-ruby lua-mode magit ac-slime
+                           ;; idle-highlight-mode
+                           inf-ruby lua-mode magit ac-slime
                            markdown-mode mustache-mode paredit autopair
                            python-mode rainbow-delimiters zenburn-theme
                            ruby-mode swank-clojure undo-tree zencoding-mode)))
