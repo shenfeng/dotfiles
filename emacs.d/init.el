@@ -108,3 +108,5 @@
       ac-menu-height 18
       ac-quick-help-delay 0.4           ;show doc quickly
       ac-use-menu-map t)
+
+(server-start)
