@@ -36,6 +36,8 @@
   (interactive)
   (when current-highlighted
     (save-excursion
+      (goto-char (point-min))           ;; back to top
+      (feng-at-point-next)              ;; find first
       (setq isearch-string current-highlighted)
       (isearch-query-replace))))
 
@@ -47,8 +49,8 @@
     map))
 
 (defun feng-highlight-at-point ()
-  (remove-overlays (point-min) (point-max) 'feng-highlight t)
   (interactive)
+  (remove-overlays (point-min) (point-max) 'feng-highlight t)
   (let* ((target-symbol (symbol-at-point))
          (target (symbol-name target-symbol)))
     (when target-symbol
@@ -62,8 +64,6 @@
             (let ((ovl (make-overlay (- end len) end)))
               (overlay-put ovl 'keymap feng-highlight-at-point-keymap)
               (overlay-put ovl 'face 'feng-highlight-at-point-face)
-              (overlay-put ovl 'priority 1000)
-              (overlay-put ovl 'evaporate t)
               (overlay-put ovl 'feng-highlight t))
             (setq end (re-search-forward regexp nil t))))))))
 

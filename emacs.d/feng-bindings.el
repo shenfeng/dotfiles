@@ -6,7 +6,8 @@
 (global-set-key (kbd "M-3") 'feng-select-third-window)
 (global-set-key (kbd "M-4") 'feng-select-forth-window)
 (global-set-key (kbd "M-q") 'cleanup-buffer)
-(global-set-key (kbd "M-e") 'feng-highlight-at-point)
+(global-set-key (kbd "M-i") 'feng-highlight-at-point)
+(global-set-key (kbd "M-e") 'feng-goto-last-change)
 (global-set-key (kbd "M-p") 'move-text-up)
 (global-set-key (kbd "M-n") 'move-text-down)
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region-or-line)
@@ -95,5 +96,6 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl$" . mustache-mode))
+
 
 (provide 'feng-bindings)
