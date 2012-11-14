@@ -97,6 +97,6 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl$" . mustache-mode))
-
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 
 (provide 'feng-bindings)

@@ -8,3 +8,5 @@ tpl=.tpl
 --smart-case
 --ignore-dir=classes
 --context=1
+--type-set
+md=.md
