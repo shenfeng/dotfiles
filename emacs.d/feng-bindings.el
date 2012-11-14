@@ -16,6 +16,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-o") 'feng-anthing-for-files)
 (global-set-key (kbd "M-o") 'feng-anthing-for-occur)
+(global-set-key (kbd "C-c C-l") 'copy-line)
 (global-set-key [f1] 'delete-other-windows)
 (global-set-key [f3] 'save-buffer)
 (global-set-key [f12] 'smart-split)
@@ -86,7 +87,7 @@
           (set-face-foreground 'magit-diff-add "green3")
           (set-face-foreground 'magit-diff-del "red3")))
 
-(eval-after-load 'html-mode
+(eval-after-load 'sgml-mode
   '(progn
      (define-key html-mode-map (kbd "<M-left>") 'sgml-skip-tag-backward)
      (define-key html-mode-map (kbd "M-r") 'rename-sgml-tag)

@@ -18,6 +18,13 @@ forward to comment"
    (line-beginning-position)
    (line-end-position lines)))
 
+(defun copy-line (arg)
+  "Copy lines (as many as prefix argument) in the kill ring"
+  (interactive "p")
+  (kill-ring-save (line-beginning-position)
+                  (line-beginning-position (+ 1 arg)))
+  (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
+
 (defun comment-or-uncomment-region-or-line (&optional lines)
   "If the line or region is not a comment, comments region
 if mark is active, line otherwise. If the line or regionnn
