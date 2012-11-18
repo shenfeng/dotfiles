@@ -116,7 +116,7 @@
 (add-hook 'slime-repl-mode-hook 'feng-repl-hook)
 (add-hook 'go-mode-hook 'feng-go-mode-hook)
 (add-hook 'python-mode-hook 'feng-python-mode-hook)
-(add-hook 'after-change-functions 'feng-buffer-change-hook)
+;; (add-hook 'after-change-functions 'feng-buffer-change-hook)
 (add-hook 'c-mode-hook 'feng-c-mode-hook)
 
 (provide 'feng-hooks)
