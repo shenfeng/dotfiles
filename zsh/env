@@ -12,7 +12,7 @@ case $OSTYPE in
             export M2=$M2_HOME/bin
             export LC_ALL=en_US.UTF-8
             PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/sbin:/usr/sbin:/home/feng/workspace/arcanist/bin
-            PATH=~/eclipse:$JAVA_HOME/bin:$PATH:~/bin:$M2:$ANT_HOME/bin:/usr/local/go/bin
+            PATH=~/bin:~/eclipse:$JAVA_HOME/bin:$PATH:$M2:$ANT_HOME/bin:/usr/local/go/bin
             PATH=$PATH:/home/feng/android/android-sdk-linux/tools:/home/feng/android/android-sdk-linux/platform-tools
             ;;
 esac
