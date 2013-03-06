@@ -1,5 +1,6 @@
 (require 'feng-defuns)
-(require 'ac-slime)
+(require 'ac-nrepl)
+;; (require 'ac-slime)
 (require 'feng-lastchange)
 
 (defun feng-elisp-mode-hook ()
@@ -12,7 +13,7 @@
   (hl-line-mode)
   (make-local-variable 'ac-ignores)
   (setq mode-name "clj")
-  (set-up-slime-ac)
+  ;; (set-up-slime-ac)
   (let ((ns (clojure-find-package)))    ; defined in clojure-mode.el
     (when (search "-test" ns)
       (save-window-excursion
@@ -31,7 +32,8 @@
 (defun feng-repl-hook ()
   (require 'clojure-mode)
   (clojure-mode-font-lock-setup)
-  (set-up-slime-ac)
+
+  ;; (set-up-slime-ac)
   (paredit-mode t))
 
 (defun feng-go-mode-hook ()
@@ -100,11 +102,16 @@
                      'face (list :background
                                  (match-string-no-properties 0))))))))
 
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'nrepl-mode))
+
 (when (require 'rainbow-delimiters nil 'noerror)
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
   (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
   ;; (add-hook 'c-mode-hook 'rainbow-delimiters-mode)
   )
+(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
 
 (add-hook 'emacs-lisp-mode-hook 'feng-elisp-mode-hook)
 (add-hook 'write-file-hooks 'delete-trailing-whitespace t)
@@ -113,7 +120,7 @@
 (add-hook 'css-mode-hook 'feng-css-mode-hook)
 (add-hook 'html-mode-hook 'feng-html-mode-hook)
 (add-hook 'js2-mode-hook 'feng-js2-mode-hook)
-(add-hook 'slime-repl-mode-hook 'feng-repl-hook)
+;; (add-hook 'slime-repl-mode-hook 'feng-repl-hook)
 (add-hook 'go-mode-hook 'feng-go-mode-hook)
 (add-hook 'python-mode-hook 'feng-python-mode-hook)
 ;; (add-hook 'after-change-functions 'feng-buffer-change-hook)

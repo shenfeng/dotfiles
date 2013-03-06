@@ -6,12 +6,14 @@
   (add-to-list 'package-archives source t))
 (package-initialize)
 (let ((packages '(anything anything-config anything-match-plugin auto-complete
+                           clojure-mode nrepl ac-nrepl
                            clojure-test-mode css-mode yasnippet ack
-                           ;; go-mode ac-nrepl nrepl
-                           inf-ruby lua-mode magit ac-slime
+                           go-mode inf-ruby ruby-mode lua-mode magit
+                           ;; ac-slime
                            markdown-mode mustache-mode paredit autopair
                            python-mode rainbow-delimiters zenburn-theme
-                           ruby-mode swank-clojure undo-tree zencoding-mode)))
+                           ;; swank-clojure
+                           undo-tree zencoding-mode)))
   (when (remove-if-not (lambda (p)
                          (not (package-installed-p p))) packages)
     (package-refresh-contents)
