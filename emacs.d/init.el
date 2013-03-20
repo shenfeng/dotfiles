@@ -43,6 +43,9 @@
       kill-whole-line 1                 ; C-k kill whole line
       make-backup-files nil)            ; Don't want any backup files
 
+(setq nrepl-popup-stacktraces nil
+      nrepl-popup-stacktraces-in-repl t)
+
 (fringe-mode (cons 2 0))
 (setq ruby-indent-level 2
       css-indent-level 4

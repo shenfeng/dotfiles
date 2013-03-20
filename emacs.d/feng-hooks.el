@@ -32,7 +32,7 @@
 (defun feng-repl-hook ()
   (require 'clojure-mode)
   (clojure-mode-font-lock-setup)
-
+  (ac-nrepl-setup)
   ;; (set-up-slime-ac)
   (paredit-mode t))
 
@@ -110,7 +110,7 @@
   (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
   ;; (add-hook 'c-mode-hook 'rainbow-delimiters-mode)
   )
-(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+(add-hook 'nrepl-mode-hook 'feng-repl-hook)
 (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
 
 (add-hook 'emacs-lisp-mode-hook 'feng-elisp-mode-hook)
