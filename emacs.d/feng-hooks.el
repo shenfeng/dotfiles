@@ -65,6 +65,10 @@
   (require 'js2-highlight-vars)
   (js2-highlight-vars-mode))
 
+(defun feng-markdown-mode-hook ()
+  (ispell-minor-mode)
+  (yas/minor-mode))
+
 (defun feng-python-mode-hook ()
   (make-local-variable 'ac-ignores)
   (autopair-mode)
@@ -122,6 +126,7 @@
 (add-hook 'js2-mode-hook 'feng-js2-mode-hook)
 ;; (add-hook 'slime-repl-mode-hook 'feng-repl-hook)
 (add-hook 'go-mode-hook 'feng-go-mode-hook)
+(add-hook 'markdown-mode-hook 'feng-markdown-mode-hook)
 (add-hook 'python-mode-hook 'feng-python-mode-hook)
 ;; (add-hook 'after-change-functions 'feng-buffer-change-hook)
 (add-hook 'c-mode-hook 'feng-c-mode-hook)

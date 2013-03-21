@@ -13,6 +13,8 @@
 (when (eq system-type 'darwin)
   (setq mac-option-modifier 'alt
         mac-command-modifier 'meta)
+  (setq ispell-program-name "/usr/local/bin/ispell")
+
   ;; macbook air is tiny
   (set-face-attribute 'default nil :font "Monaco" :height 132))
 
@@ -115,3 +117,6 @@
       ac-use-menu-map t)
 
 (server-start)
+
+(when (functionp 'ns-toggle-fullscreen)
+  (ns-toggle-fullscreen))
