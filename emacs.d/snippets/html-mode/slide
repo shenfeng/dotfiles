@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : slide
+# --
+<slide>$0</slide>

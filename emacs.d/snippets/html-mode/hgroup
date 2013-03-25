@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : hgroup
+# --
+<hgroup>$0</hgroup>
