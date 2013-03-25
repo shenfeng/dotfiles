@@ -5,6 +5,9 @@ openjdk-7-jdk openjdk-7-source redis-server rdesktop
 gtk-chtheme gnome-themes ruby-sass rake inotify-tools mysql-server
 suckless-tools vim
 
+
+lmbench # benchmark
+
 bwm-ng
 
 ranger aria2 dstat
@@ -14,3 +17,7 @@ python-pygments  ruby1.9.1-dev flashplugin-nonfree alsa-utils apache2-utils
 google-chrome
 
 sudo gem install jekyll
+
+
+# sudo tc qdisc change dev eth0 root netem delay 100ms 40ms
+# http://stackoverflow.com/questions/614795/simulate-delayed-and-dropped-packets-on-linux

@@ -51,10 +51,18 @@ function E() {
     file=`readlink -f $1`
     emacsclient -n "/sudo:root@localhost:$file"
 }
+
+is_linux() { [ $OSTYPE = 'linux-gnu' ]; }
+
 # copy full path to clipboard
 function fp() {
-    echo `readlink -f $1`
-    echo -n `readlink -f $1` | xcopy
+    if is_linux; then
+        echo `readlink -f $1`
+        echo -n `readlink -f $1` | xcopy
+    else
+        echo `greadlink -f $1`
+        echo -n `greadlink -f $1` | pbcopy
+    fi
 }
 
 # start emacs maximized

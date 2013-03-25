@@ -37,6 +37,11 @@ if is_linux; then
 else
     # show full path in finder's title
     defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+    defaults write com.apple.dashboard mcx-disabled -boolean YES
+    killall Dock
+    cp /Users/feng/dotfiles/osx/me.shenfeng.tmpfs.plist ~/Library/LaunchAgents
+    launchctl unload -w ~/Library/LaunchAgents/me.shenfeng.tmpfs.plist
+    launchctl load -w ~/Library/LaunchAgents/me.shenfeng.tmpfs.plist
 fi
 
 mkdir -p $DOTFILES/emacs.d/vendor

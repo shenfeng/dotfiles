@@ -1,14 +1,13 @@
 ControlMaster auto
 ControlPath /tmp/ssh_mux_%h_%p_%r
 ControlPersist 10h
-Host proxy
-    HostName gfwvpn.mei.fm
-    User proxyuser
-    Compression yes
 Host feng
     HostName 71.19.147.230
     User feng
     Compression yes
+Host linode
+    HostName 106.187.91.68
+    User feng
 Host feng1
     HostName 71.19.154.89
     User feng
@@ -18,16 +17,4 @@ Host home
     User feng
     Port 22
     ForwardX11 yes
-    ForwardX11Trusted yes
-Host tiger                     # office
-    HostName 118.186.12.20
-    User feng
-    ForwardX11 yes
-    Compression yes
-    ForwardX11Trusted yes
-Host lion                       # from home
-    HostName lion.mei.fm
-    User feng
-    ForwardX11 yes
-    Compression yes
     ForwardX11Trusted yes

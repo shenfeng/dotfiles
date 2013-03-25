@@ -23,3 +23,17 @@ http://superuser.com/questions/256404/fullscreen-emacs-in-osx
 defaults write com.apple.dashboard mcx-disabled -boolean YES #disable
 defaults write com.apple.dashboard mcx-disabled -boolean NO #enable
 killall Dock
+
+# show full path in finder
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+killall Finder
+
+# show all files in finder
+defaults write com.apple.Finder AppleShowAllFiles 1
+killall Finder
+
+# Option ⌥+ Click BatterySymbol show condition  more info with wifi too
+# fn + option + f1/f2 opens settings/display
+
+# apple script editor
+do shell script "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --user-data-dir=/private/tmp/ramdisk > /dev/null 2>&1 &"
