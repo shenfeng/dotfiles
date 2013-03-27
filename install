@@ -40,8 +40,14 @@ else
     defaults write com.apple.dashboard mcx-disabled -boolean YES
     killall Dock
     cp /Users/feng/dotfiles/osx/me.shenfeng.tmpfs.plist ~/Library/LaunchAgents
-    launchctl unload -w ~/Library/LaunchAgents/me.shenfeng.tmpfs.plist
-    launchctl load -w ~/Library/LaunchAgents/me.shenfeng.tmpfs.plist
+    # tmpfs for osx
+    # launchctl unload -w ~/Library/LaunchAgents/me.shenfeng.tmpfs.plist
+    # launchctl load -w ~/Library/LaunchAgents/me.shenfeng.tmpfs.plist
+
+    # disable spotlight
+    sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+    # enable it
+    # sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
 fi
 
 mkdir -p $DOTFILES/emacs.d/vendor
