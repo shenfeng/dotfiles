@@ -62,6 +62,11 @@ if [ ! -d ~/dotfiles/zsh/zsh-completions ]; then
     git clone git://github.com/zsh-users/zsh-completions.git
 fi
 
+if [ ! -d ~/dotfiles/iTerm-2-Color-Themes ]; then
+    cd $DOTFILES/
+    git clone git://github.com/baskerville/iTerm-2-Color-Themes.git
+fi
+
 rm -f ~/.zcompdump; compinit
 
 # install vcprompt
