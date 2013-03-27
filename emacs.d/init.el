@@ -117,6 +117,11 @@
       ac-use-menu-map t)
 
 (server-start)
+;;; http://batsov.com/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support/
 
-(when (functionp 'ns-toggle-fullscreen)
-  (ns-toggle-fullscreen))
+(if (functionp 'ns-toggle-fullscreen)
+    ;; emacs 24.3 remove this patch
+    (ns-toggle-fullscreen)
+  (when (eq system-type 'darwin)
+    (set-frame-parameter nil 'fullscreen nil)
+    (set-frame-parameter nil 'fullscreen 'maximized)))
