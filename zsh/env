@@ -1,9 +1,10 @@
 case $OSTYPE in
     darwin12.0)
-            PATH=/Users/feng/Downloads/mysql-5.5.25a-osx10.6-x86_64/bin
-            PATH=$PATH:/Users/feng/Downloads/redis/src:/usr/local/go/bin:/usr/local/sbin
-            export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$PATH:/Users/feng/Downloads/adt-bundle-mac-x86_64/sdk/tools:/Users/feng/Downloads/adt-bundle-mac-x86_64/sdk/platform-tools
+            PATH=/Users/feng/Downloads/mysql-5.5.25a-osx10.6-x86_64/bin:/Users/feng/Downloads/adt-bundle-mac-x86_64/sdk/tools:/Users/feng/Downloads/adt-bundle-mac-x86_64/sdk/platform-tools
+            PATH=$PATH:/Users/feng/Downloads/redis/src
+            export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin/go/bin:/usr/local/sbin:$PATH
             export LC_ALL=en_US.UTF-8
+            export GOROOT=~/bin/go
             ;;
     linux-gnu)
             export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_04

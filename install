@@ -48,6 +48,7 @@ else
     sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
     # enable it
     # sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+
 fi
 
 mkdir -p $DOTFILES/emacs.d/vendor
@@ -73,7 +74,7 @@ if [ ! -d ~/dotfiles/iTerm-2-Color-Themes ]; then
     git clone git://github.com/baskerville/iTerm-2-Color-Themes.git
 fi
 
-rm -f ~/.zcompdump; compinit
+rm -f ~/.zcompdump; compinit    #  compinit is zsh
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then
@@ -107,6 +108,23 @@ if [ ! -f ~/bin/lein ]; then
     wget -c https://github.com/technomancy/leiningen/raw/stable/bin/lein --no-check-certificate
     chmod +x lein;
     mv lein ~/bin/
+fi
+
+if ! is_linux; then
+    mkdir -p  ~/Applications
+    if [ ! -d ~/Applications/iTerm.app ]; then
+        cd /tmp/
+        wget -c https://iterm2.googlecode.com/files/iTerm2-1_0_0_20130319.zip
+        tar xf iTerm2-1_0_0_20130319.zip
+        mv iTerm.app ~/Applications
+    fi
+
+    if [ ! -d ~/bin/go ]; then
+        cd /tmp
+        wget -c https://go.googlecode.com/files/go1.0.3.darwin-amd64.tar.gz
+        tar xf go1.0.3.darwin-amd64.tar.gz
+        mv go ~/bin
+    fi
 fi
 
 # 010109248 gehua.net user id
