@@ -49,6 +49,12 @@ else
     # enable it
     # sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
 
+    # http://superuser.com/questions/460658/why-os-x-use-swap-when-there-is-lots-of-inactive-memory
+    # disable swap in osx
+    # sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist
+
+    # disable sleep mode
+    # sudo pmset -a hibernatemode 0
 fi
 
 mkdir -p $DOTFILES/emacs.d/vendor
