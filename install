@@ -39,7 +39,13 @@ else
     defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
     defaults write com.apple.dashboard mcx-disabled -boolean YES
     killall Dock
-    cp /Users/feng/dotfiles/osx/me.shenfeng.tmpfs.plist ~/Library/LaunchAgents
+    cp $DOTFILES/osx/me.shenfeng.tmpfs.plist ~/Library/LaunchAgents
+
+    # http://blog.alutam.com/2012/04/01/optimizing-macos-x-lion-for-ssd/#hibernation
+    sudo cp $DOTFILES/osx/me.shenfeng.noatime.plist /Library/LaunchDaemons/
+    sudo chown root:wheel /Library/LaunchDaemons/me.shenfeng.noatime.plist
+
+
     # tmpfs for osx
     # launchctl unload -w ~/Library/LaunchAgents/me.shenfeng.tmpfs.plist
     # launchctl load -w ~/Library/LaunchAgents/me.shenfeng.tmpfs.plist
