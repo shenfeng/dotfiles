@@ -1,8 +1,45 @@
 #! /bin/bash -x
 
-is_mac() { [ $OSTYPE = 'darwin11.0' ]; }
+is_mac() { [ $OSTYPE = 'darwin12' ]; }
 
 is_linux() { [ $OSTYPE = 'linux-gnu' ]; }
+
+if is_mac; then
+    if [ ! `which brew` ]; then
+        echo "Install homebrew"
+        ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+    fi
+    if [ ! `which wget` ]; then
+        echo "Install wget"
+        brew install wget
+    fi
+    if [ ! `which htop` ]; then
+        echo "Install htop"
+        brew install htop
+        # sudo chown root:wheel /usr/local/Cellar/htop-osx/0.8.2.1/bin/htop
+        # sudo chmod u+s /usr/local/Cellar/htop-osx/0.8.2.1/bin/htop
+    fi
+    # brew install emacs --cocoa
+    if [ ! `which greadlink` ]; then
+        echo "Install coreutils"
+        brew install coreutils
+    fi
+
+    if [ ! `which virtualenv` ]; then
+        echo "Install virtualenv"
+        sudo easy_install virtualenv
+    fi
+
+    if [ ! `which pip` ]; then
+        echo "Install pip"
+        sudo easy_install pip
+    fi
+
+    if [ ! `which ipython` ]; then
+        echo "Install ipython"
+        sudo pip install ipython
+    fi
+fi
 
 if is_linux; then
     ABSOLUTE_PATH=$(readlink -f $0)
@@ -122,6 +159,15 @@ if [ ! -f ~/bin/lein ]; then
     mv lein ~/bin/
 fi
 
+if [ ! -f ~/bin/wrk ]; then
+    echo "Install wrk"
+    cd /tmp
+    git clone git://github.com/wg/wrk.git
+    cd wrk
+    make
+    cp wrk ~/bin/
+fi
+
 if ! is_linux; then
     mkdir -p  ~/Applications
     if [ ! -d ~/Applications/iTerm.app ]; then
@@ -130,13 +176,14 @@ if ! is_linux; then
         tar xf iTerm2-1_0_0_20130319.zip
         mv iTerm.app ~/Applications
     fi
+fi
 
-    if [ ! -d ~/bin/go ]; then
-        cd /tmp
-        wget -c https://go.googlecode.com/files/go1.0.3.darwin-amd64.tar.gz
-        tar xf go1.0.3.darwin-amd64.tar.gz
-        mv go ~/bin
-    fi
+if [ ! -d ~/bin/go ]; then
+    cd /tmp
+    GOLANG=go1.1beta2.darwin-amd64.tar.gz
+    wget -c https://go.googlecode.com/files/$GOLANG
+    tar xf $GOLANG
+    mv go ~/bin
 fi
 
 # 010109248 gehua.net user id
