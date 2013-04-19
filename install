@@ -23,6 +23,8 @@ if is_mac; then
     if [ ! `which greadlink` ]; then
         echo "Install coreutils"
         brew install coreutils
+        echo "Install Emacs"
+        brew install emacs --cocoa
     fi
 
     if [ ! `which virtualenv` ]; then
@@ -76,7 +78,7 @@ else
     defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
     defaults write com.apple.dashboard mcx-disabled -boolean YES
     killall Dock
-    cp $DOTFILES/osx/me.shenfeng.tmpfs.plist ~/Library/LaunchAgents
+    # cp $DOTFILES/osx/me.shenfeng.tmpfs.plist ~/Library/LaunchAgents
 
     # http://blog.alutam.com/2012/04/01/optimizing-macos-x-lion-for-ssd/#hibernation
     sudo cp $DOTFILES/osx/me.shenfeng.noatime.plist /Library/LaunchDaemons/
