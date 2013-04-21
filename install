@@ -25,11 +25,13 @@ if is_mac; then
         brew install coreutils
         echo "Install Emacs"
         brew install emacs --cocoa
+        mkdir -p ~/Applications
+        brew linkapps
     fi
 
     if [ ! `which virtualenv` ]; then
         echo "Install virtualenv"
-        sudo easy_install virtualenv
+        # sudo easy_install virtualenv
     fi
 
     if [ ! `which pip` ]; then
@@ -117,6 +119,7 @@ ln -sf $DOTFILES/vimrc ~/.vimrc
 ln -sf $DOTFILES/zshrc ~/.zshrc
 ln -sf $DOTFILES/pyline ~/bin/pyline
 
+
 if [ ! -d ~/dotfiles/zsh/zsh-completions ]; then
     cd $DOTFILES/zsh/
     git clone git://github.com/zsh-users/zsh-completions.git
@@ -177,6 +180,7 @@ if ! is_linux; then
     if [ ! -d ~/Applications/iTerm.app ]; then
         cd /tmp/
         wget -c https://iterm2.googlecode.com/files/iTerm2-1_0_0_20130319.zip
+        mkdir -p ~/Applications
         tar xf iTerm2-1_0_0_20130319.zip
         mv iTerm.app ~/Applications
     fi

@@ -41,7 +41,7 @@ is_linux() { [ $OSTYPE = 'linux-gnu' ]; }
 
 if ! is_linux; then
     # http://successtheory.com/tips/zshtips.html
-    zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'   # case insensitive completion for cd etc *N*
+    # zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'   # case insensitive completion for cd etc *N*
 fi
 
 REPORTTIME=3 # Show elapsed time if command took more than X seconds

@@ -46,13 +46,19 @@ alias nc='rlwrap nc'
 alias e='emacsclient -n'
 alias xcopy='xclip -selection clipboard'
 
+is_linux() { [ $OSTYPE = 'linux-gnu' ]; }
+
 # edit file with root privs
 function E() {
-    file=`readlink -f $1`
-    emacsclient -n "/sudo:root@localhost:$file"
+    if is_linux; then
+        file=`readlink -f $1`
+        emacsclient -n "/sudo:root@localhost:$file"
+    else
+        file=`greadlink -f $1`
+        emacsclient -n "/sudo:root@localhost:$file"
+    fi
 }
 
-is_linux() { [ $OSTYPE = 'linux-gnu' ]; }
 
 # copy full path to clipboard
 function fp() {
