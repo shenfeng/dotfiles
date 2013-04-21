@@ -99,6 +99,8 @@ else
     # sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist
 
     # disable sleep mode
+    # https://discussions.apple.com/thread/4492672?start=0&tstart=0
+    # sudo pmset -a hibernatefile /dev/null
     # sudo pmset -a hibernatemode 0
 fi
 
