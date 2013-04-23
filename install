@@ -29,6 +29,11 @@ if is_mac; then
         brew linkapps
     fi
 
+    if [ ! `which rlwrap` ]; then
+        echo "Install rlwrap"
+        brew install rlwrap
+    fi
+
     if [ ! `which virtualenv` ]; then
         echo "Install virtualenv"
         # sudo easy_install virtualenv
