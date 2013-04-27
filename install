@@ -199,6 +199,16 @@ if [ ! -d ~/bin/go ]; then
     mv go ~/bin
 fi
 
+# install mysql, untar mysql and ln to ~/bin/mysql
+#  ./scripts/mysql_install_db --basedir=/Users/linna/Downloads/mysql-5.6.11-osx10.7-x86_64 --defaults-file=~/dotfiles/my-dev.cnf
+#  ./bin/mysqld --defaults-file=~/dotfiles/my-dev.cnf
+# ./bin/mysql --host 127.0.0.1 -uroot
+# CREATE USER feng@'%' IDENTIFIED BY ''
+# GRANT ALL PRIVILEGES ON *.* TO 'feng'@'%' with grant option;
+# flush privileges
+
+
+
 # 010109248 gehua.net user id
 # rm -f ~/.zcompdump; compinit
 
