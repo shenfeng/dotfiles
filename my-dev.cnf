@@ -88,10 +88,11 @@ log-queries-not-using-indexes
 # The following can be used as easy to replay backup logs or for replication.
 # note: if you are setting up a replication slave, see README.Debian about
 #       other settings you may need to change.
-#server-id		= 1
-#log_bin			= /var/log/mysql/mysql-bin.log
+server-id		= 1
+log_bin			= mysql-bin
 expire_logs_days	= 10
 max_binlog_size         = 100M
+binlog-do-db		= replication_test
 #binlog_do_db		= include_database_name
 #binlog_ignore_db	= include_database_name
 #
@@ -99,7 +100,7 @@ max_binlog_size         = 100M
 #
 # InnoDB is enabled by default with a 10MB datafile in /var/lib/mysql/.
 # Read the manual for more InnoDB related options. There are many!
-innodb_buffer_pool_size = 8m # default 8m, change to 152m
+innodb_buffer_pool_size =1024m # default 8m, change to 152m
 innodb_flush_log_at_trx_commit = 2 # os crash or power outage loss 1s data
 
 innodb_write_io_threads=1

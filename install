@@ -207,6 +207,21 @@ fi
 # GRANT ALL PRIVILEGES ON *.* TO 'feng'@'%' with grant option;
 # flush privileges
 
+exit
+
+show master status
+show slave status
+start slave
+stop slave 
+reset slave
+CHANGE MASTER TO
+    MASTER_HOST='192.168.1.101',
+    MASTER_USER='feng',
+    MASTER_PASSWORD='',
+    MASTER_LOG_FILE='mysql-bin.000004',
+    MASTER_LOG_POS=800;
+
+
 
 
 # 010109248 gehua.net user id
