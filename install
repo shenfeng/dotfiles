@@ -72,6 +72,7 @@ rm -rf ~/.vimrc
 rm -rf ~/.vimrc
 rm -rf ~/.xinitrc
 rm -rf ~/.zshrc
+rm -rf ~/.octaverc
 
 if is_linux; then
     ln -sf $DOTFILES/awesome ~/.config/awesome
@@ -81,6 +82,7 @@ if is_linux; then
     ln -sf $DOTFILES/xinitrc ~/.xinitrc
     ln -sf $DOTFILES/xresources ~/.Xresources
 else
+    ln -sf $DOTFILES/osx/octaverc ~/.octaverc
     # show full path in finder's title
     defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
     defaults write com.apple.dashboard mcx-disabled -boolean YES
