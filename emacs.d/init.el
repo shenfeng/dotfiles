@@ -8,7 +8,7 @@
   (when (eq system-type 'gnu/linux)
     (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
     (set-face-attribute 'default nil :font "Consolas" :height
-                        (if (= (x-display-pixel-width) 2560) 122 112))))
+                        (if (>= (x-display-pixel-width) 2560) 122 112))))
 
 (when (eq system-type 'darwin)
   (setq mac-option-modifier 'alt

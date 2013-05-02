@@ -238,3 +238,10 @@ CHANGE MASTER TO
 # google.com.             283     IN      A       74.125.128.102
 # http://203.208.45.209/
 # 203.208.46.145
+
+# google.com.		299	IN	A	74.125.31.138
+# google.com.		299	IN	A	74.125.31.113
+# google.com.		299	IN	A	74.125.31.139
+# google.com.		299	IN	A	74.125.31.101
+# google.com.		299	IN	A	74.125.31.100
+# google.com.		299	IN	A	74.125.31.102

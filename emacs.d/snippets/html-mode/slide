@@ -1,4 +1,11 @@
 # -*- mode: snippet -*-
 #name : slide
 # --
-<slide>$0</slide>
+<slide>
+   <hgroup>
+     <h2>$1</h2>
+   </hgroup>
+   <article>
+   $0
+   </article>
+</slide>
