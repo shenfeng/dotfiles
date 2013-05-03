@@ -12,6 +12,7 @@
                            ;; ac-slime
                            markdown-mode mustache-mode paredit autopair
                            python-mode rainbow-delimiters zenburn-theme
+                           exec-path-from-shell ag
                            ;; swank-clojure
                            undo-tree zencoding-mode)))
   (when (remove-if-not (lambda (p)

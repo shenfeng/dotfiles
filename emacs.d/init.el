@@ -4,20 +4,6 @@
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
-(ignore-errors                          ; emacs --daemon error
-  (when (eq system-type 'gnu/linux)
-    (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-    (set-face-attribute 'default nil :font "Consolas" :height
-                        (if (>= (x-display-pixel-width) 2560) 122 112))))
-
-(when (eq system-type 'darwin)
-  (setq mac-option-modifier 'alt
-        mac-command-modifier 'meta)
-  (setq ispell-program-name "/usr/local/bin/ispell")
-
-  ;; macbook air is tiny
-  (set-face-attribute 'default nil :font "Monaco" :height 132))
-
 (add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path (concat dotfiles-dir "vendor"))
 
@@ -35,6 +21,22 @@
 (require 'autopair)
 (require 'js2-mode)
 
+(ignore-errors                          ; emacs --daemon error
+  (when (eq system-type 'gnu/linux)
+    (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+    (set-face-attribute 'default nil :font "Consolas" :height
+                        (if (>= (x-display-pixel-width) 2560) 122 112))))
+
+(when (eq system-type 'darwin)
+  (setq mac-option-modifier 'alt
+        mac-command-modifier 'meta)
+  ;; (setq ispell-program-name "/usr/local/bin/ispell")
+  ;; https://github.com/Wilfred/ag.el
+  (exec-path-from-shell-initialize)
+
+  ;; macbook air is tiny
+  (set-face-attribute 'default nil :font "Monaco" :height 142))
+
 (setq cua-enable-cua-keys nil) ;; don't add C-x,C-c,C-v
 (cua-mode t)                   ;; for rectangles, CUA is nice
 
@@ -51,6 +53,8 @@
 (fringe-mode (cons 2 0))
 (setq ruby-indent-level 2
       css-indent-level 4
+      ;; https://github.com/Wilfred/ag.el
+      ag-highlight-search t
       autopair-blink nil
       ack-command "s "
       ack-default-directory-function 'feng-project-root
@@ -117,8 +121,8 @@
       ac-use-menu-map t)
 
 (server-start)
-;;; http://batsov.com/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support/
 
+;;; http://batsov.com/articles/2012/12/09/emacs-24-dot-3-introduces-native-osx-full-screen-support/
 (if (functionp 'ns-toggle-fullscreen)
     ;; emacs 24.3 remove this patch
     (ns-toggle-fullscreen)

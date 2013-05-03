@@ -34,6 +34,11 @@ if is_mac; then
         brew install rlwrap
     fi
 
+    if [ ! `which ag` ]; then
+        echo "Install the_silver_searcher"
+        brew install the_silver_searcher
+    fi
+
     if [ ! `which virtualenv` ]; then
         echo "Install virtualenv"
         # sudo easy_install virtualenv
@@ -148,12 +153,12 @@ if [ ! -f ~/bin/vcprompt ]; then
     mv vcprompt ~/bin/
 fi
 
-if [ ! -f ~/bin/s ]; then
+if [ ! -f ~/bin/ack ]; then
     echo "install ack-grep";
     cd /tmp/
     wget -c http://betterthangrep.com/ack-standalone -O ack-grep
     chmod +x ack-grep
-    mv ack-grep ~/bin/s
+    mv ack-grep ~/bin/ack
 fi
 
 if [ ! -f ~/.emacs.d/vendor/js2-mode.el ]; then
@@ -201,6 +206,10 @@ if [ ! -d ~/bin/go ]; then
     mv go ~/bin
 fi
 
+rm ~/bin/s
+echo '#! /bin/bash\n\nag -A 2 -B 2 $@\n' > ~/bin/s
+chmod +x ~/bin/s
+
 # install mysql, untar mysql and ln to ~/bin/mysql
 #  ./scripts/mysql_install_db --basedir=/Users/linna/Downloads/mysql-5.6.11-osx10.7-x86_64 --defaults-file=~/dotfiles/my-dev.cnf
 #  ./bin/mysqld --defaults-file=~/dotfiles/my-dev.cnf
@@ -214,7 +223,7 @@ exit
 show master status
 show slave status
 start slave
-stop slave 
+stop slave
 reset slave
 CHANGE MASTER TO
     MASTER_HOST='192.168.1.101',
