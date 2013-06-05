@@ -35,7 +35,8 @@
   (exec-path-from-shell-initialize)
 
   ;; macbook air is tiny
-  (set-face-attribute 'default nil :font "Monaco" :height 142))
+  (set-face-attribute 'default nil :font "Monaco" :height
+                      (if (>= (x-display-pixel-width) 2560) 142 142)))
 
 (setq cua-enable-cua-keys nil) ;; don't add C-x,C-c,C-v
 (cua-mode t)                   ;; for rectangles, CUA is nice

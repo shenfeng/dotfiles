@@ -158,7 +158,7 @@ if [ ! -f ~/bin/ack ]; then
     cd /tmp/
     wget -c http://betterthangrep.com/ack-standalone -O ack-grep
     chmod +x ack-grep
-    mv ack-grep ~/bin/ack
+    mv ack-grep ~/bin/s
 fi
 
 if [ ! -f ~/.emacs.d/vendor/js2-mode.el ]; then
@@ -200,15 +200,15 @@ fi
 
 if [ ! -d ~/bin/go ]; then
     cd /tmp
-    GOLANG=go1.1beta2.darwin-amd64.tar.gz
+    GOLANG=go1.1.darwin-amd64.tar.gz
     wget -c https://go.googlecode.com/files/$GOLANG
     tar xf $GOLANG
     mv go ~/bin
 fi
 
-rm ~/bin/s
-echo '#! /bin/bash\n\nag -A 2 -B 2 $@\n' > ~/bin/s
-chmod +x ~/bin/s
+# rm ~/bin/s
+# echo '#! /bin/bash\n\nag -A 2 -B 2 $@\n' > ~/bin/s
+# chmod +x ~/bin/s
 
 # install mysql, untar mysql and ln to ~/bin/mysql
 #  ./scripts/mysql_install_db --basedir=/Users/linna/Downloads/mysql-5.6.11-osx10.7-x86_64 --defaults-file=~/dotfiles/my-dev.cnf
@@ -254,3 +254,6 @@ CHANGE MASTER TO
 # google.com.		299	IN	A	74.125.31.101
 # google.com.		299	IN	A	74.125.31.100
 # google.com.		299	IN	A	74.125.31.102
+
+
+    # ssh-keygen -p -f id_rsa

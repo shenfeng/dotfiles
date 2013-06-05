@@ -6,8 +6,9 @@ Host feng
     User feng
     Compression yes
 Host linode
-    HostName 106.187.91.68
+    HostName 106.186.23.70
     User feng
+    Port 2222
 Host feng1
     HostName 71.19.154.89
     User feng
@@ -18,3 +19,22 @@ Host home
     Port 22
     ForwardX11 yes
     ForwardX11Trusted yes
+Host vpn
+   HostName weibord.com
+   User feng
+   Port 22
+   Compression yes
+Host relay
+    HostName relay.sankuai.com
+    User shenfeng
+    Port 22
+Host dev
+     HostName 192.168.2.39
+     User shenfeng
+     ForwardX11 yes
+     ForwardX11Trusted yes
+Host data_dev
+     HostName 192.168.2.241
+     User sankuai
+     ForwardX11 yes
+     ForwardX11Trusted yes
