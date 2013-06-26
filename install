@@ -86,6 +86,8 @@ if is_linux; then
     ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
     ln -sf $DOTFILES/xinitrc ~/.xinitrc
     ln -sf $DOTFILES/xresources ~/.Xresources
+    ln -sf $DOTFILES/fonts ~/.fonts
+    ln -sf $DOTFILES/fonts.conf ~/.fonts.conf
 else
     ln -sf $DOTFILES/osx/octaverc ~/.octaverc
     # show full path in finder's title
@@ -122,8 +124,6 @@ mkdir -p $DOTFILES/emacs.d/vendor
 
 ln -sf $DOTFILES/ackrc ~/.ackrc
 ln -sf $DOTFILES/emacs.d ~/.emacs.d
-ln -sf $DOTFILES/fonts ~/.fonts
-ln -sf $DOTFILES/fonts.conf ~/.fonts.conf
 ln -sf $DOTFILES/gitconfig ~/.gitconfig
 ln -sf $DOTFILES/ssh_config ~/.ssh/config
 ln -sf $DOTFILES/vim ~/.vim
@@ -153,7 +153,7 @@ if [ ! -f ~/bin/vcprompt ]; then
     mv vcprompt ~/bin/
 fi
 
-if [ ! -f ~/bin/ack ]; then
+if [ ! -f ~/bin/s ]; then
     echo "install ack-grep";
     cd /tmp/
     wget -c http://betterthangrep.com/ack-standalone -O ack-grep
@@ -200,7 +200,11 @@ fi
 
 if [ ! -d ~/bin/go ]; then
     cd /tmp
-    GOLANG=go1.1.darwin-amd64.tar.gz
+    if is_linux; then
+        GOLANG=go1.1.1.linux-amd64.tar.gz
+    else
+        GOLANG=go1.1.1.darwin-amd64.tar.gz
+    fi
     wget -c https://go.googlecode.com/files/$GOLANG
     tar xf $GOLANG
     mv go ~/bin
@@ -257,3 +261,7 @@ CHANGE MASTER TO
 
 
     # ssh-keygen -p -f id_rsa
+
+
+data-search02
+data-recomm01

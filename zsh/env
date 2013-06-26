@@ -7,15 +7,20 @@ case $OSTYPE in
             export GOROOT=~/bin/go
             ;;
     linux-gnu)
-            export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_04
-#            export JAVA_HOME=/usr/lib/jvm/java-6-sun
+            export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_21
+            # export JAVA_HOME=/usr/lib/jvm/java-6-sun
             export M2_HOME=/opt/apache-maven-3.0.4
             export ANT_HOME=/opt/apache-ant-1.8.3
             export M2=$M2_HOME/bin
             export LC_ALL=en_US.UTF-8
-            PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/sbin:/usr/sbin:/home/feng/workspace/arcanist/bin
-            PATH=~/bin:~/eclipse:$JAVA_HOME/bin:$PATH:$M2:$ANT_HOME/bin:/usr/local/go/bin
+            export GOROOT=~/bin/go
+            PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/sbin:/usr/sbin
+            PATH=~/bin:~/eclipse:$JAVA_HOME/bin:$PATH:$M2:$ANT_HOME/bin:$GOROOT/bin
             PATH=$PATH:/home/feng/android/android-sdk-linux/tools:/home/feng/android/android-sdk-linux/platform-tools
+
+            export GTK_IM_MODULE=ibus
+            export XMODIFIERS=@im=ibus
+            export QT_IM_MODULE=ibus
             ;;
 esac
 

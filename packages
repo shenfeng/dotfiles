@@ -5,6 +5,12 @@ openjdk-7-jdk openjdk-7-source redis-server rdesktop
 gtk-chtheme gnome-themes ruby-sass rake inotify-tools mysql-server
 suckless-tools vim
 
+tools:
+
+libimage-exiftool-perl alsa-utils libavcodec-extra-53 smplayer2 mplayer
+
+# ibus-pinyin
+# https://code.google.com/p/ibus/wiki/Debian
 
 lmbench # benchmark
 
