@@ -11,7 +11,7 @@ set autoread
 set ignorecase
 set smartcase
 
-set clipboard+=unnamed  " Yanks go on clipboard instead.
+set clipboard+=unnamed	" Yanks go on clipboard instead.
 
 " set number
 set history=200
@@ -56,16 +56,16 @@ set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h%y\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
 
 function! CurDir()
-    let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
-    return curdir
+	let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
+	return curdir
 endfunction
 
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    else
-        return ''
-    endif
+	if &paste
+		return 'PASTE MODE	'
+	else
+		return ''
+	endif
 endfunction
 
 
@@ -76,26 +76,58 @@ set wrap "Wrap lines
 set hlsearch
 set incsearch
 
-" To insert space characters whenever the tab key is pressed
-:set expandtab
-" affect the existing tab characters
-" :retab
-
-" the number of space characters that will be inserted
-" when the tab key is pressed
-:set tabstop=4
-
 set diffopt=iwhite,iwhite,filler,vertical
 " :set number
-
-" change the number of space characters inserted for indentation
-:set shiftwidth=4
 
 " :colorscheme zenburn
 
 
 " Highlight all instances of the current word under the cursor
-nmap <silent> ^ :setl hls<CR>:let @/="<C-r><C-w>"<CR>
-nmap <silent> ,sv :so ~/.vimrc<CR>
-nmap <silent> ,ev :e ~/.vimrc<CR>
+" nmap <silent> ^ :setl hls<CR>:let @/="<C-r><C-w>"<CR>
+" nmap <silent> ,sv :so ~/.vimrc<CR>
+" nmap <silent> ,ev :e ~/.vimrc<CR>
+
+
+" toggle show invisible charactors quickly
+" http://vimcasts.org/episodes/show-invisibles/
+set listchars=tab:▸\ ,eol:¬
+nmap <leader>l :set list!<CR>
+
+" http://vimcasts.org/episodes/tabs-and-spaces/
+" To insert space characters whenever the tab key is pressed
+:set expandtab
+" the number of space characters that will be inserted
+" when the tab key is pressed
+:set tabstop=4
+" delete by tab
+:set softtabstop=4
+" change the number of space characters inserted for indentation
+:set shiftwidth=4
+
+" http://vimcasts.org/episodes/whitespace-preferences-and-filetypes/
+if has("autocmd")
+	autocmd FileType javascript setlocal noexpandtab
+	" find filetype by using :set filetype?
+	autocmd FileType go setlocal noexpandtab
+
+	" :setfiletype xml
+	" autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
+endif
+
+" http://vimcasts.org/episodes/tidying-whitespace/
+" set [no]expand & :setab!; select and :setab!
+" :%s/\s\+$//e
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
+
 
