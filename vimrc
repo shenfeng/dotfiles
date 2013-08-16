@@ -23,9 +23,9 @@ set textwidth=80
 set wildmenu
 
 :let mapleader = ","
-map <leader>e :tabe<SPACE>
-map <Tab> :tabn<CR>
-map <S-Tab> :tabN<CR>
+" map <leader>e :tabe<SPACE>
+" map <Tab> :tabn<CR>
+" map <S-Tab> :tabN<CR>
 
 set tags=./tags,~/tags
 
@@ -130,4 +130,11 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 
+if has('gui_running')
+    set guifont=Monaco\ 13
+endif
 
+map <C-j> <C-w>j
+map <C-l> <C-w>l
+map <C-h> <C-w>h
+map <C-k> <C-w>k
