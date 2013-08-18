@@ -1,3 +1,4 @@
+set nocompatible
 syntax on
 filetype on
 filetype plugin on
@@ -17,7 +18,7 @@ set clipboard+=unnamed	" Yanks go on clipboard instead.
 set history=200
 
 " Set the textwidth to be 120 chars
-set textwidth=80
+set textwidth=120
 
 " Make the command-line completion better
 set wildmenu
@@ -53,7 +54,9 @@ set scrolloff=8
 set laststatus=2
 
 " Format the statusline
-set statusline=\ %{HasPaste()}%F%m%r%h%y\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
+" set statusline=\ %{HasPaste()}%F%m%r%h%y\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
+
+set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 
 function! CurDir()
 	let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
@@ -72,6 +75,7 @@ endfunction
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+set linebreak
 
 set hlsearch
 set incsearch
@@ -131,10 +135,11 @@ endfunction
 autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 
 if has('gui_running')
-    set guifont=Monaco\ 13
+    set guifont=Monaco:h14
 endif
 
 map <C-j> <C-w>j
 map <C-l> <C-w>l
 map <C-h> <C-w>h
 map <C-k> <C-w>k
+
