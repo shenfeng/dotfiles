@@ -1,6 +1,6 @@
 #! /bin/bash -x
 
-is_mac() { [ $OSTYPE = 'darwin12' ]; }
+is_mac() { [ $OSTYPE = 'darwin13.0' ]; }
 
 is_linux() { [ $OSTYPE = 'linux-gnu' ]; }
 
@@ -36,7 +36,7 @@ if is_mac; then
 
     if [ ! `which ag` ]; then
         echo "Install the_silver_searcher"
-        brew install the_silver_searcher
+        #brew install the_silver_searcher
     fi
 
     if [ ! `which virtualenv` ]; then
@@ -97,8 +97,8 @@ else
     # cp $DOTFILES/osx/me.shenfeng.tmpfs.plist ~/Library/LaunchAgents
 
     # http://blog.alutam.com/2012/04/01/optimizing-macos-x-lion-for-ssd/#hibernation
-    sudo cp $DOTFILES/osx/me.shenfeng.noatime.plist /Library/LaunchDaemons/
-    sudo chown root:wheel /Library/LaunchDaemons/me.shenfeng.noatime.plist
+    #sudo cp $DOTFILES/osx/me.shenfeng.noatime.plist /Library/LaunchDaemons/
+    #sudo chown root:wheel /Library/LaunchDaemons/me.shenfeng.noatime.plist
 
 
     # tmpfs for osx
@@ -106,7 +106,7 @@ else
     # launchctl load -w ~/Library/LaunchAgents/me.shenfeng.tmpfs.plist
 
     # disable spotlight
-    sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+    # sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
     # enable it
     # sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
 
@@ -176,6 +176,7 @@ if [ ! -f ~/bin/lein ]; then
     wget -c https://github.com/technomancy/leiningen/raw/stable/bin/lein --no-check-certificate
     chmod +x lein;
     mv lein ~/bin/
+    ~/bin/lein help &
 fi
 
 if [ ! -f ~/bin/wrk ]; then
@@ -201,9 +202,9 @@ fi
 if [ ! -d ~/bin/go ]; then
     cd /tmp
     if is_linux; then
-        GOLANG=go1.1.1.linux-amd64.tar.gz
+        GOLANG=go1.1.2.linux-amd64.tar.gz
     else
-        GOLANG=go1.1.1.darwin-amd64.tar.gz
+        GOLANG=go1.1.2.darwin-amd64.tar.gz
     fi
     wget -c https://go.googlecode.com/files/$GOLANG
     tar xf $GOLANG
