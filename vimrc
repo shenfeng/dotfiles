@@ -17,7 +17,7 @@ set clipboard+=unnamed	" Yanks go on clipboard instead.
 set history=200
 
 " Set the textwidth to be 120 chars
-set textwidth=80
+set textwidth=120
 
 " Make the command-line completion better
 set wildmenu
@@ -90,7 +90,9 @@ set diffopt=iwhite,iwhite,filler,vertical
 
 " toggle show invisible charactors quickly
 " http://vimcasts.org/episodes/show-invisibles/
-set listchars=tab:▸\ ,eol:¬
+" set listchars=tab:▸\ ,eol:¬
+set list
+set listchars=tab:▸\ ,trail:▫
 nmap <leader>l :set list!<CR>
 
 " http://vimcasts.org/episodes/tabs-and-spaces/
@@ -131,10 +133,16 @@ endfunction
 autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 
 if has('gui_running')
-    set guifont=Monaco\ 13
+    set guifont=Monaco\ 12
 endif
 
 map <C-j> <C-w>j
 map <C-l> <C-w>l
 map <C-h> <C-w>h
 map <C-k> <C-w>k
+
+" map <D-S-]> gt
+" map <D-S-{> gT
+map <C-1> 1gt
+
+set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)

@@ -21,7 +21,9 @@ case $OSTYPE in
             export GTK_IM_MODULE=ibus
             export XMODIFIERS=@im=ibus
             export QT_IM_MODULE=ibus
+            # ulimit -n 10240
             ;;
 esac
 
-export GOPATH=$HOME/workspace/gocode
+export GOPATH=$HOME/workspace/mining/gocode
+export EDITOR=vi

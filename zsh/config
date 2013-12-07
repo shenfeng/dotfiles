@@ -16,7 +16,7 @@ case $OSTYPE in
         ;;
 esac
 
-
+#The file to save the history in when an interactive shell exits. If unset, the history is not saved.
 HISTFILE=~/.zsh_history
 SAVEHIST=10000
 HISTSIZE=10000
@@ -58,3 +58,5 @@ case $TERM in
     preexec () { print -Pn "\e]2;$2@%m\a" }
     ;;
 esac
+
+bindkey -e

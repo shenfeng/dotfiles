@@ -22,7 +22,7 @@ Host home
 Host vpn
    HostName weibord.com
    User feng
-   Port 2222
+   Port 1000
    Compression yes
 Host relay
     HostName relay.sankuai.com
