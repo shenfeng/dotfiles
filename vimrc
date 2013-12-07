@@ -1,3 +1,4 @@
+set nocompatible
 syntax on
 filetype on
 filetype plugin on
@@ -53,7 +54,9 @@ set scrolloff=8
 set laststatus=2
 
 " Format the statusline
-set statusline=\ %{HasPaste()}%F%m%r%h%y\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
+" set statusline=\ %{HasPaste()}%F%m%r%h%y\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:%l/%L[%p%%]\ Col:%c\ Buf:%n\ [%b][0x%B]
+
+set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 
 function! CurDir()
 	let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
@@ -72,6 +75,7 @@ endfunction
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+set linebreak
 
 set hlsearch
 set incsearch
