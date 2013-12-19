@@ -27,3 +27,23 @@ sudo gem install jekyll
 
 # sudo tc qdisc change dev eth0 root netem delay 100ms 40ms
 # http://stackoverflow.com/questions/614795/simulate-delayed-and-dropped-packets-on-linux
+
+
+graphviz
+google-perftools
+libgoogle-perftools-dev
+linux-tools
+libunwind7-dev
+libelf-dev
+libdwarf-dev
+ipython
+zsh
+iotop
+htop
+zsh
+dstat
+redis-server
+libjemalloc-dev
+sysstat
+dstat
+libgflags-dev
