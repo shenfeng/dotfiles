@@ -7,12 +7,17 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
+Bundle 'mileszs/ack.vim'
+Bundle 'terryma/vim-multiple-cursors'
 
 " My bundles here:
 "
 " original repos on GitHub
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-fugitive'
+Bundle 'vim-scripts/mru.vim'
+Bundle 'vim-scripts/google.vim'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Bundle 'tpope/vim-rails.git'
 " vim-scripts repos
@@ -183,7 +188,7 @@ endfunction
 autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 
 if has('gui_running')
-    set guifont=Monaco\ 12
+    set guifont=Monaco:h14
 endif
 
 map <C-j> <C-w>j
@@ -290,3 +295,4 @@ set nofoldenable    " disable folding
 
 imap <C-j> <Plug>snipMateNextOrTrigger
 smap <C-j> <Plug>snipMateNextOrTrigger
+imap <Tab> <Plug>snipMateNextOrTrigger

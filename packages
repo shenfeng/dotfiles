@@ -3,7 +3,7 @@ xinit git-core awesome zsh iceweasel p7zip libvte9
 
 openjdk-7-jdk openjdk-7-source redis-server rdesktop
 gtk-chtheme gnome-themes ruby-sass rake inotify-tools mysql-server
-suckless-tools vim
+suckless-tools vim axel
 
 tools:
 
