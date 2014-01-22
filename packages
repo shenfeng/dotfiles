@@ -47,3 +47,5 @@ libjemalloc-dev
 sysstat
 dstat
 libgflags-dev
+
+brew install coreutils findutils gnu-sed gawk
