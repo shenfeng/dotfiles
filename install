@@ -126,8 +126,12 @@ ln -sf $DOTFILES/ackrc ~/.ackrc
 ln -sf $DOTFILES/emacs.d ~/.emacs.d
 ln -sf $DOTFILES/gitconfig ~/.gitconfig
 ln -sf $DOTFILES/ssh_config ~/.ssh/config
-ln -sf $DOTFILES/vim ~/.vim
 ln -sf $DOTFILES/vimrc ~/.vimrc
+ln -sf $DOTFILES/vim ~/.vim
+if [ ! -d ~/.vim/bundle ]; then
+   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+   vim +BundleInstall +qall
+fi
 ln -sf $DOTFILES/zshrc ~/.zshrc
 ln -sf $DOTFILES/pyline ~/bin/pyline
 
@@ -143,6 +147,25 @@ if [ ! -d ~/dotfiles/iTerm-2-Color-Themes ]; then
 fi
 
 rm -f ~/.zcompdump; compinit    #  compinit is zsh
+
+
+if is_linux; then
+    sudo apt-get install rdesktop rake vim axel libssh-dev alsa-utils emacs24 htop  \
+        tmux ttf-wqy-microhei xserver-xorg-core p7zip xinit git-core zsh awesome \
+        openjdk-7-jdk openjdk-7-source vim-gtk linux-tools google-perftools iotop dstat ipython \
+        libvte9
+
+    sudo apt-get install linux-headers-$(uname -r)
+
+    if [ ! `which google-chrome` ]; then
+        cd /tmp
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb
+        sudo apt-get install -f
+    fi
+fi
+
+
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then
@@ -202,14 +225,15 @@ fi
 if [ ! -d ~/bin/go ]; then
     cd /tmp
     if is_linux; then
-        GOLANG=go1.1.2.linux-amd64.tar.gz
+        GOLANG=go1.2.linux-amd64.tar.gz
     else
-        GOLANG=go1.1.2.darwin-amd64.tar.gz
+        GOLANG=go1.2.darwin-amd64.tar.gz
     fi
     wget -c https://go.googlecode.com/files/$GOLANG
     tar xf $GOLANG
     mv go ~/bin
 fi
+
 
 # rm ~/bin/s
 # echo '#! /bin/bash\n\nag -A 2 -B 2 $@\n' > ~/bin/s

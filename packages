@@ -5,6 +5,8 @@ openjdk-7-jdk openjdk-7-source redis-server rdesktop
 gtk-chtheme gnome-themes ruby-sass rake inotify-tools mysql-server
 suckless-tools vim axel
 
+libssh-dev
+
 tools:
 
 libimage-exiftool-perl alsa-utils libavcodec-extra-53 smplayer2 mplayer
