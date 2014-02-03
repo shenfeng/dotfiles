@@ -1,8 +1,8 @@
 case $OSTYPE in
     darwin13.0)
-            PATH=/Users/feng/Downloads/mysql-5.5.25a-osx10.6-x86_64/bin:/Users/feng/Downloads/adt-bundle-mac-x86_64/sdk/tools:/Users/feng/Downloads/adt-bundle-mac-x86_64/sdk/platform-tools
-            PATH=$PATH:/Users/feng/Downloads/redis/src
+            PATH=/Users/feng/hbase-0.96.1.1-hadoop2/bin
             export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin/go/bin:/usr/local/sbin:$PATH
+            export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home
             export LC_ALL=en_US.UTF-8
             export GOROOT=~/bin/go
             ;;
@@ -26,4 +26,5 @@ case $OSTYPE in
 esac
 
 export GOPATH=$HOME/workspace/mining/gocode
+export GOPATH=$HOME/gocode
 export EDITOR=vi

@@ -34,10 +34,6 @@ alias gb='git branch'
 alias gl='git lg'
 alias g='git status'
 alias gd='git difftool --cached'
-alias gud='git fetch gerrit && git stash && git rebase gerrit/dev &&  git stash pop'
-alias gum='git fetch gerrit && git stash && git rebase gerrit/master &&  git stash pop'
-alias gpm='git push origin HEAD:refs/for/master'
-alias gpd='git push origin HEAD:refs/for/dev'
 
 alias dhclient='dhclient -v'
 alias nc='rlwrap nc'
@@ -69,6 +65,10 @@ function fp() {
         echo `greadlink -f $1`
         echo -n `greadlink -f $1` | pbcopy
     fi
+}
+
+function work() {
+    cd ~/gocode/src/github.com/kylentechwolf/engine
 }
 
 # start emacs maximized
