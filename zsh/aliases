@@ -33,6 +33,7 @@ alias 'ps?'='ps ax | grep '
 alias gb='git branch'
 alias gl='git lg'
 alias g='git status'
+# alias work='cd ~/gocode/src/github.com/kylentechwolf/engine'
 alias gd='git difftool --cached'
 alias gud='git fetch gerrit && git stash && git rebase gerrit/dev &&  git stash pop'
 alias gum='git fetch gerrit && git stash && git rebase gerrit/master &&  git stash pop'
@@ -69,6 +70,12 @@ function fp() {
         echo `greadlink -f $1`
         echo -n `greadlink -f $1` | pbcopy
     fi
+}
+
+function work() {
+    dir=`readlink -f ~/gocode/src/github.com/kylentechwolf/engine/$1`
+    # echo $dir
+    cd $dir
 }
 
 # start emacs maximized
