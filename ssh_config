@@ -1,18 +1,6 @@
 ControlMaster auto
 ControlPath /tmp/ssh_mux_%h_%p_%r
 ControlPersist 10h
-Host feng
-    HostName 71.19.147.230
-    User feng
-    Compression yes
-Host linode
-    HostName 106.186.23.70
-    User feng
-    Port 2222
-Host feng1
-    HostName 71.19.154.89
-    User feng
-    Compression yes
 Host home
     HostName 192.168.1.101
     User feng
@@ -24,17 +12,27 @@ Host vpn
    User feng
    Port 1000
    Compression yes
-Host relay
-    HostName relay.sankuai.com
-    User shenfeng
-    Port 22
 Host dev
-     HostName 192.168.2.39
-     User shenfeng
+     HostName 192.168.1.251
+     User feng
      ForwardX11 yes
      ForwardX11Trusted yes
-Host data_dev
-     HostName 192.168.2.241
-     User sankuai
-     ForwardX11 yes
-     ForwardX11Trusted yes
+
+Host fetcher1
+     HostName 107.170.44.18
+     User root
+     Compression yes
+
+Host fetcher2
+     HostName 128.199.216.59
+     User root
+     Compression yes
+
+Host fetcher3
+     HostName 128.199.212.167
+     User root
+     Compression yes
+# Host fetcher2
+#      HostName 115.28.142.231
+#      User root
+#      Compression yes

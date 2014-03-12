@@ -128,10 +128,7 @@ ln -sf $DOTFILES/gitconfig ~/.gitconfig
 ln -sf $DOTFILES/ssh_config ~/.ssh/config
 ln -sf $DOTFILES/vimrc ~/.vimrc
 ln -sf $DOTFILES/vim ~/.vim
-if [ ! -d ~/.vim/bundle ]; then
-   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-   vim +BundleInstall +qall
-fi
+
 ln -sf $DOTFILES/zshrc ~/.zshrc
 ln -sf $DOTFILES/pyline ~/bin/pyline
 
@@ -157,11 +154,20 @@ if is_linux; then
         openjdk-7-jdk openjdk-7-source vim-gtk linux-tools google-perftools iotop dstat ipython \
         libvte9 virtualbox iftop pktstat sysstat
 
+    sudo apt-get install linux-headers-$(uname -r)
+
+    sudo apt-get install virtualbox-qt vagrant
+
     if [ ! `which google-chrome` ]; then
         cd /tmp
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         sudo dpkg -i google-chrome-stable_current_amd64.deb
         sudo apt-get install -f
+    fi
+
+    if [ ! -d ~/.vim/bundle ]; then
+        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+        vim +BundleInstall +qall
     fi
 fi
 
