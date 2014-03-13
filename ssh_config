@@ -1,38 +1,65 @@
 ControlMaster auto
 ControlPath /tmp/ssh_mux_%h_%p_%r
 ControlPersist 10h
+
 Host home
     HostName 192.168.1.101
     User feng
     Port 22
     ForwardX11 yes
     ForwardX11Trusted yes
+
 Host vpn
    HostName weibord.com
    User feng
    Port 1000
    Compression yes
+
 Host dev
      HostName 192.168.1.251
      User feng
      ForwardX11 yes
      ForwardX11Trusted yes
 
+     # digital ocean
 Host fetcher1
      HostName 107.170.44.18
      User root
-     Compression yes
+     # Compression yes
 
+     # digital ocean
 Host fetcher2
      HostName 128.199.216.59
      User root
-     Compression yes
+     # Compression yes
 
+     # digital ocean
 Host fetcher3
      HostName 128.199.212.167
      User root
-     Compression yes
-# Host fetcher2
-#      HostName 115.28.142.231
-#      User root
-#      Compression yes
+     # Compression yes
+
+     # aliyun
+Host fetcher4
+     HostName 115.28.142.231
+     User root
+     # Compression yes
+
+Host dev03
+     HostName 192.168.1.13
+     User work
+     ForwardX11Trusted yes
+     ForwardX11 yes
+
+Host dev01
+     HostName 119.57.160.22
+     Port 9292
+     User work
+     # ForwardX11Trusted yes
+     # ForwardX11 yes
+
+Host dev02
+     HostName 192.168.1.12
+     User work
+     ForwardX11Trusted yes
+     ForwardX11 yes
