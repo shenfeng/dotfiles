@@ -23,15 +23,32 @@ Host dev
 
      # digital ocean
 Host fetcher1
-     HostName 107.170.44.18
+     # HostName 107.170.44.18
+     # nyc2
+     HostName 107.170.95.102
      User root
      # Compression yes
 
      # digital ocean
 Host fetcher2
-     HostName 128.199.216.59
+     # HostName 128.199.216.59
+     HostName 162.243.141.18
      User root
      # Compression yes
+
+Host fetcher3
+    HostName 192.241.205.146
+    User root
+
+Host fetcher4
+     # aliyun
+     HostName 115.28.142.231
+     User root
+     # Compression yes
+
+
+
+
 
      # digital ocean
 Host fetcher3
@@ -39,11 +56,6 @@ Host fetcher3
      User root
      # Compression yes
 
-     # aliyun
-Host fetcher4
-     HostName 115.28.142.231
-     User root
-     # Compression yes
 
 Host dev03
      HostName 192.168.1.13

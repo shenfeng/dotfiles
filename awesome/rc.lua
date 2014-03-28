@@ -269,6 +269,13 @@ globalkeys = awful.util.table.join(
                 run_or_raise(terminal, { class = "Evilvte" })
                 awful.tag.viewonly(tags[1][6])
                                      end),
+  awful.key(
+     {},
+     "Print",
+     function()
+        awful.util.spawn("capscr",false)
+     end
+           ),
    -- awful.key({ modkey,       }, "e", function ()
    --              run_or_raise("eclipse", { class = "Eclipse" })
    --              awful.tag.viewonly(tags[1][2])

@@ -68,6 +68,10 @@ function fp() {
     fi
 }
 
+function tokudb() {
+    mysql -h 192.168.1.251 -P 3306 techwolf -uroot
+}
+
 function work() {
     dir=`readlink -f ~/gocode/src/github.com/kylentechwolf/engine/$1`
     # echo $dir
