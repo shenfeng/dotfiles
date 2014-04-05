@@ -40,14 +40,29 @@ Host fetcher3
     HostName 192.241.205.146
     User root
 
+Host prod1
+     # aliyun
+     HostName 115.28.142.231
+     User work
+     Compression yes
+     # Compression yes
+
+
 Host fetcher4
      # aliyun
      HostName 115.28.142.231
      User root
      # Compression yes
 
+Host fetcher5
+     # aliyun
+     HostName 114.215.108.185
+     User root
 
-
+Host fetcher6
+     # aliyun
+     HostName 115.28.142.231
+     User root
 
 
      # digital ocean
