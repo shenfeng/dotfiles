@@ -14,10 +14,11 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 
-alias tw='sudo tcpdump -i any -s 65535 -w /tmp/tcpdump && wireshark /tmp/tcpdump'
+alias tw='sudo tcpdump -i any -s 65535 -w /tmp/tcpdump_$$ && wireshark /tmp/tcpdump_$$'
 alias ..='cd ..'
 
 alias l='ls -lhSr'              # sort by size desc
+alias l='ls -lh'              # sort by size desc
 alias lh='ls -ld .*'            # List only file beginning with "."
 alias f='free -m'
 alias df='df -h'
@@ -54,6 +55,10 @@ function E() {
         file=`greadlink -f $1`
         emacsclient -n "/sudo:root@localhost:$file"
     fi
+}
+
+function kport() {
+    lsof -t -sTCP:LISTEN  -i:$1 | xargs kill
 }
 
 
