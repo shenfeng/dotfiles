@@ -48,26 +48,23 @@ Host prod1
      # Compression yes
 
 
-Host fetcher4
-     # aliyun
-     HostName 115.28.142.231
-     User root
-     # Compression yes
-
 Host fetcher5
      # aliyun
      HostName 114.215.108.185
+     IdentityFile ~/.ssh/root_key
      User root
 
 Host fetcher6
      # aliyun
      HostName 115.28.142.231
+     IdentityFile ~/.ssh/root_key
      User root
 
 
      # digital ocean
 Host fetcher3
      HostName 128.199.212.167
+     IdentityFile ~/.ssh/root_key
      User root
      # Compression yes
 
@@ -79,9 +76,12 @@ Host dev03
      ForwardX11 yes
 
 Host dev01
+     # HostName 192.168.1.11
      HostName 119.57.160.22
+     # Port 22
+     IdentityFile ~/.ssh/root_key_11
      Port 9292
-     User work
+     User root
      # ForwardX11Trusted yes
      # ForwardX11 yes
 
@@ -90,3 +90,133 @@ Host dev02
      User work
      ForwardX11Trusted yes
      ForwardX11 yes
+
+Host dev04
+     HostName 192.168.1.14
+     User work
+     ForwardX11Trusted yes
+     ForwardX11 yes
+
+Host ec2
+     HostName 54.178.216.44
+     User ubuntu
+     IdentityFile /var/tmp/kylen.pem
+
+Host f1
+     HostName 60.190.223.163
+     User yao
+     Port 2746
+     # Compression yes
+
+Host f2
+     HostName 60.190.223.45
+     User yao
+     Port 54872
+     Compression yes
+
+Host f3
+     HostName 60.190.223.59
+     User yao
+     Port 35072
+     # Compression yes
+     # Kidne@!460oO
+     # RkpQPjYt6U
+     # passw0rd@techwolf
+     # ghj#534fd
+
+Host fetcher4
+     # aliyun
+     HostName 115.28.142.231
+     IdentityFile ~/.ssh/root_key
+     User root
+     # Compression yes
+
+Host aliyun9                    # dfetcher
+     HostName 42.96.204.151
+     IdentityFile ~/.ssh/root_key
+     User root
+
+Host aliyun8                    # dfetcher
+     HostName 115.29.103.176
+     IdentityFile ~/.ssh/root_key
+     User root
+
+Host aliyun1                    # web
+# 10.144.140.122
+     HostName 115.28.142.231
+     IdentityFile ~/.ssh/root_key
+     User root
+
+Host aliyun2                    # web
+# 10.163.172.110
+     HostName 114.215.108.185
+     IdentityFile ~/.ssh/root_key
+     User root
+
+
+
+Host aliyun3                    # search & suggest
+     # 10.144.15.102
+     HostName 115.28.11.36
+     IdentityFile ~/.ssh/root_key
+     User root
+
+Host aliyun4                    # search & suggest
+     # 10.144.3.98
+     HostName 115.28.197.70
+     IdentityFile ~/.ssh/root_key
+     User root
+
+
+Host aliyun6                    # db master
+     # 10.129.13.14
+     HostName 42.96.132.151
+     IdentityFile ~/.ssh/root_key
+     User root
+
+Host aliyun7                    # db slave
+     # 10.163.211.199
+     HostName 115.29.103.37
+     IdentityFile ~/.ssh/root_key
+     User root
+
+Host aliyun5                    # BI
+     HostName 42.96.132.171
+     IdentityFile ~/.ssh/root_key
+     User root
+
+Host gfw
+     HostName 106.187.48.228
+     User root
+
+Host aliyun10
+     HostName 115.28.50.41
+     IdentityFile ~/.ssh/root_key
+     User root
+
+Host techwolf-ks-01
+     HostName 101.251.107.116
+     IdentityFile ~/.ssh/root_key
+     User ubuntu
+
+Host techwolf-ks-02
+     HostName 101.251.103.166
+     IdentityFile ~/.ssh/root_key
+     User ubuntu
+
+# Host aliyun9
+#      HostName 42.96.204.151
+#      User root
+
+# Host aliyun8
+#      HostName 115.29.103.176
+#      User root
+
+# http://91.213.30.151/
+
+# /sbin/iptables -L -v -n --line-numbers
+# /sbin/iptables -D INPUT 6
+
+ # skanzhun@10.144.15.102 identified by 'sIjk!@1*U';
+
+# mysqldump -uroot -p'Kidne@!460oO' kanzhun company_extra company | gzip > /tmp/company.sql.gz
