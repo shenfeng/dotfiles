@@ -20,7 +20,7 @@ if '-m' in opts:
 cmd = ' '.join(args)
 if not cmd.strip():
     cmd = 'line'                        # no-op
-    
+
 codeobj = compile(cmd, 'command', 'eval')
 write = sys.stdout.write
 
@@ -28,21 +28,27 @@ def host(url):
     return urlparse(url).netloc
 
 def seg_access_log(line):
-    delimiters = {'[': ']', '"': '"'}
-    idx, count, current, delimiter, words = 0, len(line), '', ' ', []
-    while idx < count:
-        c = line[idx]
-        if c == delimiter:
-            if current:
-                words.append(current)
-                current = ''
-            delimiter = ' '               # reset
-        elif delimiters.get(c):
-            delimiter = delimiters.get(c)
-        else:
-            current += c
-        idx += 1
-    return words
+   delimiters = {'[': ']', '"': '"'}
+    idx, start, count, delimiter, results = 0, 0, len(line), ' ', []
+
+    while 1:
+        idx = line.find(delimiter, start)
+        delimiter = ' '  # reset
+        if idx < 0:
+            break
+
+        if start < idx:
+            results.append(line[start:idx])
+        start = idx + 1
+        # if idx != count - 1 and line[idx + 1] in delimiters:
+        if line[idx + 1] in delimiters:
+            delimiter = delimiters[line[idx + 1]]
+            start += 1
+
+    if start < count:
+        results.append(line[start:].rstrip())
+
+    return results
 
 for numz, line in enumerate(sys.stdin):
     line = line[:-1]

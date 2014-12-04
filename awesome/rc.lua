@@ -113,7 +113,7 @@ end
 
  -- {{{ Tags
  tags = {
-    names  = {"misc-1", "java","misc-2", "media", "chrome", "term", emacs },
+    names  = {"firefox", "idea","misc-2", "media", "chrome", "term", emacs },
     layout = { layouts[1], layouts[3], layouts[2], layouts[3], layouts[2], layouts[3], layouts[3] }}
 
  for s = 1, screen.count() do

@@ -149,14 +149,14 @@ rm -f ~/.zcompdump; compinit    #  compinit is zsh
 if is_linux; then
     sudo apt-get install linux-headers-$(uname -r)
 
-    sudo apt-get install rdesktop rake vim axel libssh-dev alsa-utils emacs24 htop  \
+    sudo apt-get install rdesktop rake vim axel libssh-dev alsa-utils htop  \
         tmux ttf-wqy-microhei xserver-xorg-core p7zip xinit git-core zsh awesome \
         openjdk-7-jdk openjdk-7-source vim-gtk linux-tools google-perftools iotop dstat ipython \
         libvte9 virtualbox iftop pktstat sysstat
 
     sudo apt-get install linux-headers-$(uname -r)
 
-    sudo apt-get install virtualbox-qt vagrant
+    sudo apt-get install virtualbox-qt vagrant suckless-tools python-pip libmysqlclient-dev python-dev iceweasel
 
     if [ ! `which google-chrome` ]; then
         cd /tmp
@@ -228,7 +228,7 @@ if ! is_linux; then
     fi
 fi
 
-if [ ! -d ~/bin/go ]; then
+if [ -d ~/bin/go ]; then
     cd /tmp
     if is_linux; then
         GOLANG=go1.2.linux-amd64.tar.gz
@@ -296,3 +296,16 @@ CHANGE MASTER TO
 
 data-search02
 data-recomm01
+
+
+npm config set proxy http://localhost:6565
+npm config set https-proxy http://localhost:6565
+# sudo pip install jieba tornado MySQL-python redis
+
+# gbrt
+
+synergys -n desktop -f -c ~/dotfiles/synergy.conf
+
+
+openssl vsftpd
+# 7957214

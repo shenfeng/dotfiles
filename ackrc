@@ -7,6 +7,8 @@ jinja2=.jinja2
 tpl=.tpl
 --smart-case
 --ignore-dir=classes
+--ignore-dir=gen-java
+--ignore-dir=gen-py
 --context=1
 --type-set
 md=.md

@@ -25,6 +25,7 @@ alias df='df -h'
 
 # color
 alias tree='tree -C'
+alias node='nodejs'
 
 #easy to see network
 alias li='lsof -i -nP'
@@ -58,7 +59,7 @@ function E() {
 }
 
 function kport() {
-    lsof -t -sTCP:LISTEN  -i:$1 | xargs kill
+    sudo lsof -t -sTCP:LISTEN  -i:$1 | xargs -I {} sudo kill {}
 }
 
 
