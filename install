@@ -1,14 +1,15 @@
 #! /bin/bash -x
 
-is_mac() { [ $OSTYPE = 'darwin13.0' ]; }
+is_mac() { [[ $OSTYPE == darwin13* ]]; }
 
-is_linux() { [ $OSTYPE = 'linux-gnu' ]; }
+is_linux() { [[ $OSTYPE == linux* ]]; }
 
 if is_mac; then
     if [ ! `which brew` ]; then
         echo "Install homebrew"
         ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
     fi
+
     if [ ! `which wget` ]; then
         echo "Install wget"
         brew install wget
@@ -33,6 +34,27 @@ if is_mac; then
         echo "Install rlwrap"
         brew install rlwrap
     fi
+
+    brew install caskroom/cask/brew-cask
+
+    # install mysql client
+    brew cask install sequel-pro
+    brew cask install google-chrome
+    brew cask install qq
+    brew cask install baiduinput
+    brew cask install firefox
+    brew cask install macvim
+    brew cask install synergy
+    brew cask search sketchup
+    brew cask install iterm2
+
+    # Omnigraffle
+
+    # balsamiq
+
+    # neovim
+
+
 
     if [ ! `which ag` ]; then
         echo "Install the_silver_searcher"
@@ -217,25 +239,24 @@ if [ ! -f ~/bin/wrk ]; then
     cp wrk ~/bin/
 fi
 
-if ! is_linux; then
-    mkdir -p  ~/Applications
-    if [ ! -d ~/Applications/iTerm.app ]; then
-        cd /tmp/
-        wget -c https://iterm2.googlecode.com/files/iTerm2-1_0_0_20130319.zip
-        mkdir -p ~/Applications
-        tar xf iTerm2-1_0_0_20130319.zip
-        mv iTerm.app ~/Applications
-    fi
-fi
+# if ! is_linux; then
+    # if [ ! -d /Applications/iTerm.app/ ]; then
+    #     cd /tmp/
+    #     wget -c https://iterm2.com/downloads/stable/iTerm2_v2_0.zip
+    #     mkdir -p ~/Applications
+    #     tar xf iTerm2-1_0_0_20130319.zip
+    #     mv iTerm.app /Applications
+    # fi
+# fi
 
 if [ -d ~/bin/go ]; then
     cd /tmp
     if is_linux; then
-        GOLANG=go1.2.linux-amd64.tar.gz
+        GOLANG=go1.3.2.linux-amd64.tar.gz
     else
-        GOLANG=go1.2.darwin-amd64.tar.gz
+        GOLANG=go1.3.2.darwin-amd64-osx10.8.tar.gz
     fi
-    wget -c https://go.googlecode.com/files/$GOLANG
+    wget -c https://storage.googleapis.com/golang/$GOLANG
     tar xf $GOLANG
     mv go ~/bin
 fi
