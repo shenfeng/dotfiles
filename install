@@ -1,6 +1,6 @@
 #! /bin/bash -x
 
-is_mac() { [[ $OSTYPE == darwin13* ]]; }
+is_mac() { [[ $OSTYPE == darwin14* ]]; }
 
 is_linux() { [[ $OSTYPE == linux* ]]; }
 
@@ -41,11 +41,11 @@ if is_mac; then
     brew cask install sequel-pro
     brew cask install google-chrome
     brew cask install qq
-    brew cask install baiduinput
+#    brew cask install baiduinput
     brew cask install firefox
-    brew cask install macvim
-    brew cask install synergy
-    brew cask search sketchup
+#    brew cask install macvim
+#    brew cask install synergy
+#    brew cask search sketchup
     brew cask install iterm2
 
     # Omnigraffle
@@ -102,16 +102,16 @@ rm -rf ~/.zshrc
 rm -rf ~/.octaverc
 
 if is_linux; then
-    ln -sf $DOTFILES/awesome ~/.config/awesome
-    ln -sf $DOTFILES/chrome ~/bin/
-    ln -sf $DOTFILES/evilvte/evilvte ~/bin/
-    ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
-    ln -sf $DOTFILES/xinitrc ~/.xinitrc
-    ln -sf $DOTFILES/xresources ~/.Xresources
-    ln -sf $DOTFILES/fonts ~/.fonts
-    ln -sf $DOTFILES/fonts.conf ~/.fonts.conf
+    ln -sf ${DOTFILES}/awesome ~/.config/awesome
+    ln -sf ${DOTFILES}/chrome ~/bin/
+    ln -sf ${DOTFILES}/evilvte/evilvte ~/bin/
+    ln -sf ${DOTFILES}/tmux.conf ~/.tmux.conf
+    ln -sf ${DOTFILES}/xinitrc ~/.xinitrc
+    ln -sf ${DOTFILES}/xresources ~/.Xresources
+    ln -sf ${DOTFILES}/fonts ~/.fonts
+    ln -sf ${DOTFILES}/fonts.conf ~/.fonts.conf
 else
-    ln -sf $DOTFILES/osx/octaverc ~/.octaverc
+    ln -sf ${DOTFILES}/osx/octaverc ~/.octaverc
     # show full path in finder's title
     defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
     defaults write com.apple.dashboard mcx-disabled -boolean YES
@@ -142,26 +142,26 @@ else
     # sudo pmset -a hibernatemode 0
 fi
 
-mkdir -p $DOTFILES/emacs.d/vendor
+mkdir -p ${DOTFILES}/emacs.d/vendor
 
-ln -sf $DOTFILES/ackrc ~/.ackrc
-ln -sf $DOTFILES/emacs.d ~/.emacs.d
-ln -sf $DOTFILES/gitconfig ~/.gitconfig
-ln -sf $DOTFILES/ssh_config ~/.ssh/config
-ln -sf $DOTFILES/vimrc ~/.vimrc
-ln -sf $DOTFILES/vim ~/.vim
+ln -sf ${DOTFILES}/ackrc ~/.ackrc
+ln -sf ${DOTFILES}/emacs.d ~/.emacs.d
+ln -sf ${DOTFILES}/gitconfig ~/.gitconfig
+ln -sf ${DOTFILES}/ssh_config ~/.ssh/config
+ln -sf ${DOTFILES}/vimrc ~/.vimrc
+ln -sf ${DOTFILES}/vim ~/.vim
 
-ln -sf $DOTFILES/zshrc ~/.zshrc
-ln -sf $DOTFILES/pyline ~/bin/pyline
+ln -sf ${DOTFILES}/zshrc ~/.zshrc
+ln -sf ${DOTFILES}/pyline ~/bin/pyline
 
 
 if [ ! -d ~/dotfiles/zsh/zsh-completions ]; then
-    cd $DOTFILES/zsh/
+    cd ${DOTFILES}/zsh/
     git clone git://github.com/zsh-users/zsh-completions.git
 fi
 
 if [ ! -d ~/dotfiles/iTerm-2-Color-Themes ]; then
-    cd $DOTFILES/
+    cd ${DOTFILES}/
     git clone git://github.com/baskerville/iTerm-2-Color-Themes.git
 fi
 
@@ -239,25 +239,15 @@ if [ ! -f ~/bin/wrk ]; then
     cp wrk ~/bin/
 fi
 
-# if ! is_linux; then
-    # if [ ! -d /Applications/iTerm.app/ ]; then
-    #     cd /tmp/
-    #     wget -c https://iterm2.com/downloads/stable/iTerm2_v2_0.zip
-    #     mkdir -p ~/Applications
-    #     tar xf iTerm2-1_0_0_20130319.zip
-    #     mv iTerm.app /Applications
-    # fi
-# fi
-
 if [ -d ~/bin/go ]; then
     cd /tmp
     if is_linux; then
-        GOLANG=go1.3.2.linux-amd64.tar.gz
+        GOLANG=go1.4rc2.linux-amd64.tar.gz
     else
-        GOLANG=go1.3.2.darwin-amd64-osx10.8.tar.gz
+        GOLANG=go1.4rc2.darwin-amd64-osx10.8.tar.gz
     fi
     wget -c https://storage.googleapis.com/golang/$GOLANG
-    tar xf $GOLANG
+    tar xf ${GOLANG}
     mv go ~/bin
 fi
 
