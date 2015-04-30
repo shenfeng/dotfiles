@@ -26,6 +26,8 @@ google-chrome
 
 sudo gem install jekyll
 
+pip install boltons
+
 
 # sudo tc qdisc change dev eth0 root netem delay 100ms 40ms
 # http://stackoverflow.com/questions/614795/simulate-delayed-and-dropped-packets-on-linux
