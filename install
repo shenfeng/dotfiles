@@ -1,5 +1,8 @@
 #! /bin/bash -x
 
+set -e
+set -u
+
 is_mac() { [[ $OSTYPE == darwin14* ]]; }
 
 is_linux() { [[ $OSTYPE == linux* ]]; }
@@ -162,23 +165,23 @@ fi
 
 if [ ! -d ~/dotfiles/iTerm-2-Color-Themes ]; then
     cd ${DOTFILES}/
-    git clone git://github.com/baskerville/iTerm-2-Color-Themes.git
+    # git clone git://github.com/baskerville/iTerm-2-Color-Themes.git
 fi
 
-rm -f ~/.zcompdump; compinit    #  compinit is zsh
+# rm -f ~/.zcompdump; compinit    #  compinit is zsh
 
 
 if is_linux; then
-    sudo apt-get install linux-headers-$(uname -r)
+    sudo apt-get install linux-headers-$(uname -r) build-essential htop net-tools zsh
 
-    sudo apt-get install rdesktop rake vim axel libssh-dev alsa-utils htop  \
+    sudo apt-get install rdesktop rake vim axel libssh-dev alsa-utils htop \
         tmux ttf-wqy-microhei xserver-xorg-core p7zip xinit git-core zsh awesome \
-        openjdk-7-jdk openjdk-7-source vim-gtk linux-tools google-perftools iotop dstat ipython \
-        libvte9 virtualbox iftop pktstat sysstat
+        openjdk-8-jdk openjdk-8-source vim-gtk linux-tools google-perftools iotop dstat ipython \
+        libvte9 iftop pktstat sysstat
 
     sudo apt-get install linux-headers-$(uname -r)
 
-    sudo apt-get install virtualbox-qt vagrant suckless-tools python-pip libmysqlclient-dev python-dev iceweasel
+    sudo apt-get install   suckless-tools python-pip python-mysqldb python-dev iceweasel
 
     if [ ! `which google-chrome` ]; then
         cd /tmp
@@ -221,6 +224,7 @@ fi
 # ssh -C2qTnN -D localhost:3218 username@server
 
 # install lein
+mkdir -p ~/bin/
 if [ ! -f ~/bin/lein ]; then
     echo "install lein";
     cd /tmp;
@@ -235,16 +239,16 @@ if [ ! -f ~/bin/wrk ]; then
     cd /tmp
     git clone git://github.com/wg/wrk.git
     cd wrk
-    make
+    make -j
     cp wrk ~/bin/
 fi
 
-if [ -d ~/bin/go ]; then
+if [ ! -d ~/bin/go ]; then
     cd /tmp
     if is_linux; then
-        GOLANG=go1.4rc2.linux-amd64.tar.gz
+        GOLANG=go1.9.2.linux-amd64.tar.gz
     else
-        GOLANG=go1.4rc2.darwin-amd64-osx10.8.tar.gz
+        GOLANG=go1.9.2.darwin-amd64.tar.gz
     fi
     wget -c https://storage.googleapis.com/golang/$GOLANG
     tar xf ${GOLANG}

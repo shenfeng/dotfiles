@@ -1,2 +1,2 @@
 #! /bin/sh
-google-chrome
+google-chrome  --proxy-pac-url=https://noopac.com/386297760/6235834.pac
