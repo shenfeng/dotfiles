@@ -172,7 +172,7 @@ fi
 
 
 if is_linux; then
-    sudo apt-get install linux-headers-$(uname -r) build-essential htop net-tools zsh
+    sudo apt-get install linux-headers-$(uname -r) build-essential htop net-tools zsh thrift-compiler=0.9.1-2.1+b1
 
     sudo apt-get install rdesktop rake vim axel libssh-dev alsa-utils htop \
         tmux ttf-wqy-microhei xserver-xorg-core p7zip xinit git-core zsh awesome \
@@ -194,6 +194,8 @@ if is_linux; then
         git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
         vim +BundleInstall +qall
     fi
+
+    sudo pip install tornado
 fi
 
 
@@ -228,6 +230,13 @@ fi
 
 if [ ! -f ~/bin/z.sh ]; then
     wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/bin/z.sh
+fi
+
+if [ ! -d ~/bin/maven ]; then
+    local maven=apache-maven-3.5.2
+    local maven_bin=$maven-bin.tar.gz
+    (cd /tmp && wget http://download.nextag.com/apache/maven/maven-3/3.5.2/binaries/$maven_bin && tar xf $maven_bin && mv $maven ~/bin/)
+    ln -s ~/bin/$maven ~/bin/maven
 fi
 
 if [ ! -f ~/bin/lein ]; then

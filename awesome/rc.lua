@@ -183,7 +183,7 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
-names  = {"firefox", "idea","misc-2", "media", "chrome", "term", emacs }
+names  = {"firefox", "idea","idea-2", "misc", "chrome", "term", emacs, "remote"}
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -327,16 +327,16 @@ globalkeys = awful.util.table.join(
 --             {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
+    awful.key({ modkey, "Control"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
-              {description = "swap with previous client by index", group = "client"}),
+--    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
+ --             {description = "swap with previous client by index", group = "client"}),
 --    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
 --              {description = "focus the next screen", group = "screen"}),
 --    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
  --             {description = "focus the previous screen", group = "screen"}),
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
-              {description = "jump to urgent client", group = "client"}),
+--    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
+--              {description = "jump to urgent client", group = "client"}),
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
@@ -351,25 +351,30 @@ globalkeys = awful.util.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
+    awful.key({ modkey, "Control" }, "l", function()
+            awful.util.spawn("xset dpms force off")
+            awful.util.spawn("slock")
+        end,
+              {description = "lock screen", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.03)          end,
               {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.03)          end,
               {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-              {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-              {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-              {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-              {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"}),
+--    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
+--              {description = "increase the number of master clients", group = "layout"}),
+--    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
+--              {description = "decrease the number of master clients", group = "layout"}),
+--    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
+--              {description = "increase the number of columns", group = "layout"}),
+--    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
+ --             {description = "decrease the number of columns", group = "layout"}),
+   awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+             {description = "select next", group = "layout"}),
+--    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+--              {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, }, "w", function() 
                 run_or_raise("chrome", { class = "Google-chrome" })
@@ -380,6 +385,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, }, "c", function() 
                 run_or_raise("evilvte", { class = "Evilvte" })
                 awful.tag.viewonly(my_tags[6])
+            end,
+              {description = "Run or switch to terminal", group = "app"}),
+
+    awful.key({ modkey, }, "o", function() 
+                run_or_raise("remote_evilvte", { class = "Remote" })
+                awful.tag.viewonly(my_tags[8])
             end,
               {description = "Run or switch to terminal", group = "app"}),
 

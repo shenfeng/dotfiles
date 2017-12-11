@@ -7,20 +7,16 @@ case $OSTYPE in
             export GOROOT=~/bin/go
             ;;
     linux-gnu)
-            # export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_21
             unset JAVA_HOME
-            # export JAVA_HOME=/usr/lib/jvm/java-6-sun
-            export JAVA_HOME=/usr/lib/jvm/jdk1.8.0/
-            export M2_HOME=/opt/apache-maven-3.0.4
+            export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
             export ANT_HOME=/opt/apache-ant-1.8.3
+            export M2_HOME=~/bin/maven
             export M2=$M2_HOME/bin
             export LC_ALL=en_US.UTF-8
             export GOROOT=~/bin/go
             PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/sbin:/usr/sbin:/opt/scala-2.10.3/bin
             PATH=~/bin:~/eclipse:$JAVA_HOME/bin:$PATH:$M2:$ANT_HOME/bin:$GOROOT/bin
             PATH=$PATH:/home/feng/android/android-sdk-linux/tools:/home/feng/android/android-sdk-linux/platform-tools
-            PATH=$PATH:/home/feng/Downloads/zookeeper-3.4.5/bin:/opt/apache-maven-3.1.1/bin:/opt/sbt/bin
-            export M2_HOME=/opt/apache-maven-3.1.1
             export GTK_IM_MODULE=ibus
             export XMODIFIERS=@im=ibus
             export QT_IM_MODULE=ibus
