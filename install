@@ -197,6 +197,7 @@ if is_linux; then
 fi
 
 
+mkdir -p ~/bin/
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then
@@ -224,7 +225,11 @@ fi
 # ssh -C2qTnN -D localhost:3218 username@server
 
 # install lein
-mkdir -p ~/bin/
+
+if [ ! -f ~/bin/z.sh ]; then
+    wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/bin/z.sh
+fi
+
 if [ ! -f ~/bin/lein ]; then
     echo "install lein";
     cd /tmp;

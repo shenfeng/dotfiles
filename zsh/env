@@ -35,3 +35,4 @@ export PATH=$PATH:~/gcode/bin
 export EDITOR=vim
 #export LD_LIBRARY_PATH=/home/feng/gcode/deps/rocksdb 
 #export DYLD_LIBRARY_PATH=/home/feng/gcode/deps/rocksdb
+source ~/bin/z.sh
