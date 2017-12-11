@@ -44,7 +44,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
+-- beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -330,10 +331,10 @@ globalkeys = awful.util.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
-              {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
-              {description = "focus the previous screen", group = "screen"}),
+--    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
+--              {description = "focus the next screen", group = "screen"}),
+--    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
+ --             {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
     awful.key({ modkey,           }, "Tab",
@@ -383,7 +384,7 @@ globalkeys = awful.util.table.join(
               {description = "Run or switch to terminal", group = "app"}),
 
     awful.key({ modkey, }, "`", function() 
-                run_or_raise("idea", { class = "Idea" })
+                run_or_raise("idea", { class = "Idea"})
                 -- jlocal screen = awful.screen.focused()
                 -- local tag = screen.tags[5]
                 awful.tag.viewonly(my_tags[2])
@@ -437,21 +438,21 @@ clientkeys = awful.util.table.join(
     --         {description = "close", group = "client"}),
     awful.key({ modkey }, "q",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
-    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
-              {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
-              {description = "move to master", group = "client"}),
-    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-              {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-              {description = "toggle keep on top", group = "client"}),
-    awful.key({ modkey,           }, "n",
-        function (c)
+--    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
+--              {description = "toggle floating", group = "client"}),
+--    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
+--              {description = "move to master", group = "client"}),
+--    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
+--              {description = "move to screen", group = "client"}),
+--    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+--             {description = "toggle keep on top", group = "client"}),
+ --   awful.key({ modkey,           }, "n",
+ --       function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end ,
-        {description = "minimize", group = "client"}),
+ --           c.minimized = true
+  --      end ,
+   --     {description = "minimize", group = "client"}),
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized = not c.maximized
@@ -476,17 +477,17 @@ for i = 1, 9 do
                   end,
                   {description = "view tag #"..i, group = "tag"}),
         -- Toggle tag display.
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      local screen = awful.screen.focused()
-                      local tag = screen.tags[i]
-                      if tag then
-                         awful.tag.viewtoggle(tag)
-                      end
-                  end,
-                  {description = "toggle tag #" .. i, group = "tag"}),
+--        awful.key({ modkey, "Control" }, "#" .. i + 9,
+--                  function ()
+--                      local screen = awful.screen.focused()
+--                      local tag = screen.tags[i]
+--                      if tag then
+--                         awful.tag.viewtoggle(tag)
+--                      end
+--                  end,
+--                  {description = "toggle tag #" .. i, group = "tag"}),
         -- Move client to tag.
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
+        awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
                       if client.focus then
                           local tag = client.focus.screen.tags[i]
@@ -495,18 +496,18 @@ for i = 1, 9 do
                           end
                      end
                   end,
-                  {description = "move focused client to tag #"..i, group = "tag"}),
+                  {description = "move focused client to tag #"..i, group = "tag"})
         -- Toggle tag on focused client.
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = client.focus.screen.tags[i]
-                          if tag then
-                              client.focus:toggle_tag(tag)
-                          end
-                      end
-                  end,
-                  {description = "toggle focused client on tag #" .. i, group = "tag"})
+--        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
+ --                 function ()
+  --                    if client.focus then
+   --                       local tag = client.focus.screen.tags[i]
+    --                      if tag then
+     --                         client.focus:toggle_tag(tag)
+      --                    end
+       --               end
+        --          end,
+         --         {description = "toggle focused client on tag #" .. i, group = "tag"})
     )
 end
 
@@ -541,7 +542,7 @@ awful.rules.rules = {
       properties = {tag = my_tags[1]}},
     { rule = { class = "Evilvte" },
       properties = {tag = my_tags[6]}},
-    { rule = { class = "Idea" },
+    { rule_any = { class = {"Idea", "idea" } },
       properties = {tag = my_tags[2]}},
     -- Floating clients.
     { rule_any = {
