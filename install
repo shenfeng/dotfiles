@@ -172,16 +172,17 @@ fi
 
 
 if is_linux; then
-    sudo apt-get install linux-headers-$(uname -r) build-essential htop net-tools zsh thrift-compiler=0.9.1-2.1+b1
+    sudo apt-get install linux-headers-$(uname -r) build-essential htop net-tools zsh thrift-compiler=0.9.1-2.1+b1 -y
 
     sudo apt-get install rdesktop rake vim axel libssh-dev alsa-utils htop \
         tmux ttf-wqy-microhei xserver-xorg-core p7zip xinit git-core zsh awesome \
         openjdk-8-jdk openjdk-8-source vim-gtk linux-tools google-perftools iotop dstat ipython \
-        libvte9 iftop pktstat sysstat
+        libvte9 iftop pktstat sysstat -y
 
-    sudo apt-get install linux-headers-$(uname -r)
+    # sudo apt-get install linux-headers-$(uname -r) -y
 
-    sudo apt-get install   suckless-tools python-pip python-mysqldb python-dev iceweasel
+    sudo apt-get install suckless-tools python-pip python-mysqldb python-dev iceweasel -y
+    sudo apt-get install fcitx fcitx-googlepinyin -y
 
     if [ ! `which google-chrome` ]; then
         cd /tmp
@@ -210,10 +211,15 @@ if [ ! -f ~/bin/vcprompt ]; then
     mv vcprompt ~/bin/
 fi
 
+if [ ! -f ~/bin/tldr ]; then
+    curl -o ~/bin/tldr https://raw.githubusercontent.com/raylee/tldr/master/tldr
+    chmod +x ~/bin/tldr
+fi
+
 if [ ! -f ~/bin/s ]; then
     echo "install ack-grep";
     cd /tmp/
-    wget -c http://betterthangrep.com/ack-standalone -O ack-grep
+    wget -c https://beyondgrep.com/ack-2.20-single-file -O ack-grep
     chmod +x ack-grep
     mv ack-grep ~/bin/s
 fi
