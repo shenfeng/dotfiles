@@ -1,5 +1,5 @@
 case $OSTYPE in
-    darwin14.0)
+    darwin17.0.0)
             PATH=/Users/feng/hbase-0.96.1.1-hadoop2/bin
             export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin/go/bin:/usr/local/sbin:$PATH
             export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home

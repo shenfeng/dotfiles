@@ -239,8 +239,8 @@ if [ ! -f ~/bin/z.sh ]; then
 fi
 
 if [ ! -d ~/bin/maven ]; then
-    local maven=apache-maven-3.5.2
-    local maven_bin=$maven-bin.tar.gz
+    maven=apache-maven-3.5.2
+    maven_bin=$maven-bin.tar.gz
     (cd /tmp && wget http://download.nextag.com/apache/maven/maven-3/3.5.2/binaries/$maven_bin && tar xf $maven_bin && mv $maven ~/bin/)
     ln -s ~/bin/$maven ~/bin/maven
 fi
